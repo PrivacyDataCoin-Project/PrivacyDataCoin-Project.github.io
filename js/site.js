@@ -2,9 +2,9 @@
   const dict = window.PDC_I18N;
   const layers = window.PDC_LAYERS;
   let releaseInfo = {
-    tag: "v2.0.0",
-    date: "17 September 2026",
-    url: "https://github.com/ArqTras/pdc/releases/tag/v2.0.0",
+    tag: "v2.2.0",
+    date: "30 September 2026",
+    url: "https://github.com/PrivacyDataCoin-Project/PDC/releases/latest",
     body: ""
   };
 
