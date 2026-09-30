@@ -48,7 +48,7 @@ a:hover { color: #fff; }
   color: var(--ink);
   margin-bottom: 0.9rem;
 }
-.brand img { width: 100%; max-width: 210px; height: auto; }
+.brand img { display: block; height: 48px; width: auto; max-width: 100%; }
 .brand small { color: var(--muted); font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; }
 .search {
   width: 100%;
