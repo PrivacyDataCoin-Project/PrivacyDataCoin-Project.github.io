@@ -1,5 +1,7 @@
 (function () {
-  const endpoint = "https://api.github.com/repos/ArqTras/pdc/releases/latest";
+  const repo = "PrivacyDataCoin-Project/PDC";
+  const endpoint = "https://api.github.com/repos/" + repo + "/releases/latest";
+  const latestDownload = "https://github.com/" + repo + "/releases/latest/download/";
 
   function megabytes(size) {
     const mb = Number(size) / 1048576;
@@ -49,7 +51,7 @@
       box.querySelectorAll("a").forEach((link) => link.remove());
       assets.forEach((asset) => {
         const link = document.createElement("a");
-        link.href = asset.browser_download_url;
+        link.href = latestDownload + encodeURIComponent(asset.name);
         link.append(document.createTextNode(label(asset.name) + " "));
         const size = document.createElement("span");
         size.textContent = megabytes(asset.size);
@@ -72,9 +74,9 @@
     })
     .then((release) => {
       const info = {
-        tag: release.tag_name || "v2.0.0",
+        tag: release.tag_name || "",
         date: published(release.published_at),
-        url: release.html_url || "https://github.com/ArqTras/pdc/releases/latest",
+        url: "https://github.com/" + repo + "/releases/latest",
         body: (release.body || "").trim(),
         assets: Array.isArray(release.assets) ? release.assets : []
       };
