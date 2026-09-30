@@ -109,6 +109,8 @@ window.PDC_I18N = {
     "id.v.consensus": "RandomARQ proof of work and Zarcanum proof of stake",
     "id.k.source": "Source",
     "id.k.domain": "Domain",
+    "id.k.email": "Email",
+    "id.k.telegram": "Telegram",
     "feat.kicker": "Protocol",
     "feat.title": "Mechanisms written into the PDC core.",
     "feat.lede": "The names below are the names in the code. The text says what each one hides or enables on this network.",
