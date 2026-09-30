@@ -61,7 +61,7 @@ window.PDC_I18N = {
     "card6.d": "Confidential assets, aliases, escrow, and integrated addresses are part of this chain. A normal address starts with Px.",
     "eco.kicker": "On this network",
     "eco.title": "What PDC ships.",
-    "eco.note": "These pieces are in the arqtras/pdc tree and in release {version}.",
+    "eco.note": "These pieces are in the PrivacyDataCoin-Project/PDC tree and in release {version}.",
     "eco1.t": "Desktop wallet",
     "eco1.d": "The Qt GUI from {version} sends, receives, and talks to the PDC core, including aliases and custom assets.",
     "eco2.t": "Node",
@@ -87,13 +87,13 @@ window.PDC_I18N = {
     "faq.kicker": "Short answers",
     "faq.title": "From the repository, not from a brochure.",
     "faq1.q": "Is there a public website already?",
-    "faq1.a": "The project organization hosts a one-page placeholder at privacydatacoin.com. This site is the replacement, written against the arqtras/pdc sources.",
+    "faq1.a": "The project organization hosts a one-page placeholder at privacydatacoin.com. This site is the replacement, written against the PrivacyDataCoin-Project/PDC sources.",
     "faq2.q": "Is the supply capped?",
     "faq2.a": "No. get_base_block_reward returns 1 PDC at every height. There is no premine. About 1,440 blocks fit in a day when the 60-second target holds, so emission is about 525,600 PDC a year.",
     "faq3.q": "Which software should I run?",
     "faq3.a": "Release {version}, published {date}. Use the files from that GitHub release. Its notes are the upgrade record.",
     "faq4.q": "Where is the code?",
-    "faq4.a": "The chain, the daemon, simplewallet, and the Qt desktop GUI live at github.com/arqtras/pdc on the pdc branch.",
+    "faq4.a": "The chain, the daemon, simplewallet, and the Qt desktop GUI live at github.com/PrivacyDataCoin-Project/PDC on the master branch.",
     "dl.kicker": "{version}",
     "dl.title": "Wallets and node binaries.",
     "dl.note": "GUI builds include the desktop wallet. CLI archives include the daemon and simplewallet.",
@@ -163,7 +163,7 @@ window.PDC_I18N = {
     "down.gui": "Desktop wallet",
     "down.cli": "Daemon and simplewallet",
     "down.build": "Build from source",
-    "down.build.d": "Clone with submodules: git clone --recursive https://github.com/ArqTras/pdc.git -b pdc. Dependencies, Boost, OpenSSL, and Qt are documented in the repository README. The GUI binaries in the release are the short path.",
+    "down.build.d": "Clone with submodules: git clone --recursive https://github.com/PrivacyDataCoin-Project/PDC.git. Dependencies, Boost, OpenSSL, and Qt are documented in the repository README. The GUI binaries in the release are the short path.",
     "down.warn": "Genesis of this network: df35cba557c857756f20612ce3c9d2aa315d0ae8fc2aaffe6c5c59d37e00b10a. Mainnet ports: P2P 19121, RPC 19211, stratum 19777."
   }
 
