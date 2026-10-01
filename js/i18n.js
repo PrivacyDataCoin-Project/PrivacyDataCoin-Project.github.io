@@ -3,6 +3,7 @@ window.PDC_I18N = {
     "nav.features": "Protocol",
     "nav.network": "Network",
     "nav.download": "Download",
+    "nav.privacy": "Privacy",
     "nav.source": "Source",
     "nav.docs": "Docs",
     "footer.tag": "Privacy Data Coin. Parameters taken from the pdc source tree.",
