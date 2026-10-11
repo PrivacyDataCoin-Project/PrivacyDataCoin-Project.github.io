@@ -4,88 +4,59 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Getting started · PDC Docs</title>
-  <meta name="description" content="Install v2.0.0, sync, and make a wallet.">
-  <link rel="icon" href="../../favicon.png" type="image/png">
+  <meta name="description" content="Install the current release, sync, and make a wallet.">
+  <link rel="canonical" href="https://docs.privacydatacoin.com/use/getting-started.html">
+  <link rel="icon" href="../favicon.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Montserrat:wght@600;700&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../../css/docs.css">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Montserrat:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/docs.css">
 </head>
 <body>
-  <button class="menu" type="button" data-menu aria-expanded="false">Menu</button>
+  <canvas class="rain" aria-hidden="true"></canvas>
+  <button class="menu-btn" type="button" data-menu aria-expanded="false">Menu</button>
   <div class="backdrop" data-backdrop hidden></div>
   <aside class="sidebar">
-    <a class="brand" href="../../index.html">
-      <img src="../../graphics/pdc-logo.png" alt="PDC">
-      <small>Documentation</small>
+    <a class="brand" href="../index.html">
+      <img class="brand-mark" src="../graphics/pdc-mark.png" width="42" height="42" alt="">
+      <span><strong>PDC</strong><small>Documentation</small></span>
     </a>
+    <a class="release-chip" data-doc-release href="https://github.com/PrivacyDataCoin-Project/PDC/releases/latest"><span data-doc-version>v2.4.2</span></a>
     <input class="search" type="search" placeholder="Filter topics" aria-label="Filter topics">
-    <div class="nav-group"><h2>Learn</h2><a href="../../learn/what-is-pdc.html">What PDC is</a><a href="../../learn/how-it-works.html">How PDC works</a><a href="../../learn/faq.html">FAQ</a></div>
-<div class="nav-group"><h2>Use</h2><a href="../../use/getting-started.html" aria-current="page">Getting started</a><a href="../../use/wallets.html">Wallets</a><a href="../../use/security.html">Security and privacy</a><a href="../../use/troubleshooting.html">Troubleshooting</a></div>
-<div class="nav-group"><h2>Build</h2><a href="../../build/from-source.html">Build from source</a><a href="../../build/rpc.html">Node RPC</a><a href="../../build/assets.html">Confidential assets</a><a href="../../build/aliases.html">Aliases</a><a href="../../build/services.html">Escrow, swaps, and offers</a></div>
-<div class="nav-group"><h2>Mine</h2><a href="../../mine/mining.html">Mining</a></div>
-<div class="nav-group"><h2>Stake</h2><a href="../../stake/staking.html">Staking</a><a href="../../stake/proof-of-stake.html">Proof of stake</a></div>
-<div class="nav-group"><h2>Code</h2><a href="../../code/parameters.html">Network parameters</a><a href="../../code/source-map.html">Source map</a></div>
+    <div class="nav-group"><h2>Learn</h2><a href="../learn/what-is-pdc.html">What PDC is</a><a href="../learn/how-it-works.html">How PDC works</a><a href="../learn/faq.html">FAQ</a></div>
+<div class="nav-group"><h2>Use</h2><a href="../use/getting-started.html" aria-current="page">Getting started</a><a href="../use/wallets.html">Wallets</a><a href="../use/security.html">Security and privacy</a><a href="../use/troubleshooting.html">Troubleshooting</a></div>
+<div class="nav-group"><h2>Build</h2><a href="../build/from-source.html">Build from source</a><a href="../build/rpc.html">Node RPC</a><a href="../build/assets.html">Confidential assets</a><a href="../build/aliases.html">Aliases</a><a href="../build/services.html">Escrow, swaps, and offers</a></div>
+<div class="nav-group"><h2>Mine</h2><a href="../mine/mining.html">Mining</a></div>
+<div class="nav-group"><h2>Stake</h2><a href="../stake/staking.html">Staking</a><a href="../stake/proof-of-stake.html">Proof of stake</a></div>
+<div class="nav-group"><h2>Code</h2><a href="../code/parameters.html">Network parameters</a><a href="../code/source-map.html">Source map</a></div>
   </aside>
   <div class="layout">
     <main>
       <article>
         <p class="kicker">Use</p>
         <h1>Getting started</h1>
-        <p>Use release v2.0.0. It was published on 17 September 2026. The release notes state that this version resets the network and is incompatible with v1.0.0.7.</p>
-<p>Download the files from <a href="https://github.com/ArqTras/pdc/releases/tag/v2.0.0">the v2.0.0 release</a>.</p>
+        <p>Use release <a data-doc-release href="https://github.com/PrivacyDataCoin-Project/PDC/releases/latest"><span data-doc-version>v2.4.2</span></a>, published <span data-doc-date>10 October 2026</span>. That number is the latest release of <a href="https://github.com/PrivacyDataCoin-Project/PDC">PrivacyDataCoin-Project/PDC</a>. Stay on the current release for both the wallet and the node.</p>
+<div data-release-files>
 <table>
-<thead>
-<tr>
-<th>File</th>
-<th>Role</th>
-<th>Approximate size</th>
-</tr>
-</thead>
+<thead><tr><th>File</th><th>Role</th><th>Size</th></tr></thead>
 <tbody>
-<tr>
-<td><code>Pdc-GUI-v2.0.0-ubuntu-22.04.AppImage</code></td>
-<td>Linux desktop wallet</td>
-<td>169 MB</td>
-</tr>
-<tr>
-<td><code>Pdc-Gui-v2.0.0-ubuntu-22.04.tar.gz</code></td>
-<td>Linux desktop wallet archive</td>
-<td>164 MB</td>
-</tr>
-<tr>
-<td><code>Pdc-Gui-v2.0.0-windows.exe</code></td>
-<td>Windows installer</td>
-<td>98 MB</td>
-</tr>
-<tr>
-<td><code>Pdc-Gui-v2.0.0-windows.zip</code></td>
-<td>Windows desktop wallet archive</td>
-<td>116 MB</td>
-</tr>
-<tr>
-<td><code>Pdc-Gui-v2.0.0-osx.tar.gz</code></td>
-<td>macOS desktop wallet</td>
-<td>154 MB</td>
-</tr>
-<tr>
-<td><code>Pdc-v2.0.0-ubuntu-22.04.tar.gz</code></td>
-<td>Linux daemon and simplewallet</td>
-<td>50 MB</td>
-</tr>
-<tr>
-<td><code>Pdc-v2.0.0-windows.zip</code></td>
-<td>Windows daemon and simplewallet</td>
-<td>10 MB</td>
-</tr>
-<tr>
-<td><code>Pdc-v2.0.0-osx.tar.gz</code></td>
-<td>macOS daemon and simplewallet</td>
-<td>12 MB</td>
-</tr>
+<tr><td><a href="https://github.com/PrivacyDataCoin-Project/PDC/releases/download/v2.4.2/pdc-linux-x64-gui-2.4.2.9-337176a.AppImage">pdc-linux-x64-gui-2.4.2.9-337176a.AppImage</a></td><td>Linux desktop wallet</td><td>166 MB</td></tr>
+<tr><td><a href="https://github.com/PrivacyDataCoin-Project/PDC/releases/download/v2.4.2/pdc-linux-arm64-gui-2.4.2.9-337176a.AppImage">pdc-linux-arm64-gui-2.4.2.9-337176a.AppImage</a></td><td>Linux desktop wallet</td><td>175 MB</td></tr>
+<tr><td><a href="https://github.com/PrivacyDataCoin-Project/PDC/releases/download/v2.4.2/pdc-windows-x64-gui-2.4.2.9-337176a-installer.exe">pdc-windows-x64-gui-2.4.2.9-337176a-installer.exe</a></td><td>Windows installer</td><td>194 MB</td></tr>
+<tr><td><a href="https://github.com/PrivacyDataCoin-Project/PDC/releases/download/v2.4.2/pdc-windows-x64-gui-2.4.2.9-337176a.zip">pdc-windows-x64-gui-2.4.2.9-337176a.zip</a></td><td>Windows desktop wallet archive</td><td>281 MB</td></tr>
+<tr><td><a href="https://github.com/PrivacyDataCoin-Project/PDC/releases/download/v2.4.2/pdc-macos-arm64-gui-v2.4.2.9.337176a.dmg">pdc-macos-arm64-gui-v2.4.2.9.337176a.dmg</a></td><td>macOS desktop wallet</td><td>271 MB</td></tr>
+<tr><td><a href="https://github.com/PrivacyDataCoin-Project/PDC/releases/download/v2.4.2/pdc-macos-x64-gui-v2.4.2.9.337176a.dmg">pdc-macos-x64-gui-v2.4.2.9.337176a.dmg</a></td><td>macOS desktop wallet</td><td>244 MB</td></tr>
+<tr><td><a href="https://github.com/PrivacyDataCoin-Project/PDC/releases/download/v2.4.2/pdc-linux-x64-cli-2.4.2.9-337176a.tar.bz2">pdc-linux-x64-cli-2.4.2.9-337176a.tar.bz2</a></td><td>Linux daemon and simplewallet</td><td>15.4 MB</td></tr>
+<tr><td><a href="https://github.com/PrivacyDataCoin-Project/PDC/releases/download/v2.4.2/pdc-linux-arm64-cli-2.4.2.9-337176a.tar.bz2">pdc-linux-arm64-cli-2.4.2.9-337176a.tar.bz2</a></td><td>Linux daemon and simplewallet</td><td>15.7 MB</td></tr>
+<tr><td><a href="https://github.com/PrivacyDataCoin-Project/PDC/releases/download/v2.4.2/pdc-windows-x64-cli-2.4.2.9-337176a.zip">pdc-windows-x64-cli-2.4.2.9-337176a.zip</a></td><td>Windows daemon and simplewallet</td><td>108 MB</td></tr>
+<tr><td><a href="https://github.com/PrivacyDataCoin-Project/PDC/releases/download/v2.4.2/pdc-macos-arm64-cli-v2.4.2.9.337176a.tar.bz2">pdc-macos-arm64-cli-v2.4.2.9.337176a.tar.bz2</a></td><td>macOS daemon and simplewallet</td><td>12.7 MB</td></tr>
+<tr><td><a href="https://github.com/PrivacyDataCoin-Project/PDC/releases/download/v2.4.2/pdc-macos-x64-cli-v2.4.2.9.337176a.tar.bz2">pdc-macos-x64-cli-v2.4.2.9.337176a.tar.bz2</a></td><td>macOS daemon and simplewallet</td><td>12.9 MB</td></tr>
+<tr><td><a href="https://github.com/PrivacyDataCoin-Project/PDC/releases/download/v2.4.2/pdc-macos-universal-cli-v2.4.2.9.337176a.tar.bz2">pdc-macos-universal-cli-v2.4.2.9.337176a.tar.bz2</a></td><td>macOS daemon and simplewallet</td><td>25.6 MB</td></tr>
 </tbody>
 </table>
-<p>The GUI binaries in that release are a Qt 6 build. A source build uses Qt 5 WebEngine when it is installed, and Qt 6 otherwise.</p>
+</div>
+
+<p>The GUI binaries in that release are a Qt 6.8 build. A source build that should match them uses Qt 6.8.3, as the repository README describes. CMake still accepts Qt 5 if <code>Qt5WebEngineWidgets</code> is found. Release builds do not use it.</p>
 <h2 id="first-launch">First launch</h2>
 <ol>
 <li>Install the desktop wallet, or unpack the command-line archive.</li>
@@ -102,7 +73,7 @@
 <p>You can also open <a href="https://explorer.privacydatacoin.com/">the block explorer</a> and compare the height with your node. The explorer is a view of public data. It does not reveal wallet transfers.</p>
 <h2 id="a-first-command-line-session">A first command-line session</h2>
 <p>From the directory that contains the binaries:</p>
-<pre><code class="language-text">./daemon
+<pre><code class="language-text">./pdcd
 </code></pre>
 <p>In another terminal, against the default RPC at <code>127.0.0.1:19211</code>:</p>
 <pre><code class="language-text">./simplewallet --generate-new-wallet=mywallet --daemon-address=127.0.0.1:19211
@@ -111,8 +82,8 @@
 <blockquote>
 <p>The exact generate-wallet flag follows the binary's <code>--help</code> text. If a flag name differs in a build, trust <code>simplewallet --help</code> over a remembered example. The commands inside a running wallet are the handlers in <code>src/simplewallet/simplewallet.cpp</code>.</p>
 </blockquote>
-        <nav class="pager"><a href="../../learn/faq.html">← FAQ</a><a href="../../use/wallets.html">Wallets →</a></nav>
-        <p class="footer">Facts in this manual come from the <a href="https://github.com/ArqTras/pdc">ArqTras/pdc</a> tree, branch <code>pdc</code>, and from release v2.0.0. The public site is <a href="https://privacydatacoin.com/">privacydatacoin.com</a>. The block explorer is <a href="https://explorer.privacydatacoin.com/">explorer.privacydatacoin.com</a>.</p>
+        <nav class="pager"><a href="../learn/faq.html">← FAQ</a><a href="../use/wallets.html">Wallets →</a></nav>
+        <p class="footer">Edition <a data-doc-release href="https://github.com/PrivacyDataCoin-Project/PDC/releases/latest"><span data-doc-version>v2.4.2</span></a> follows the latest release of <a href="https://github.com/PrivacyDataCoin-Project/PDC">PrivacyDataCoin-Project/PDC</a>. The manual is <a href="https://docs.privacydatacoin.com/">docs.privacydatacoin.com</a>. The public site is <a href="https://privacydatacoin.com/">privacydatacoin.com</a>. The block explorer is <a href="https://explorer.privacydatacoin.com/">explorer.privacydatacoin.com</a>.</p>
       </article>
     </main>
     <aside class="toc">
@@ -127,6 +98,8 @@
 
     </aside>
   </div>
-  <script src="../../js/docs.js"></script>
+  <script src="../js/rain.js"></script>
+  <script src="../js/docs.js"></script>
+  <script src="../js/release.js"></script>
 </body>
 </html>

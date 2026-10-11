@@ -5,34 +5,37 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Source map · PDC Docs</title>
   <meta name="description" content="Where each subsystem lives in the tree.">
-  <link rel="icon" href="../../favicon.png" type="image/png">
+  <link rel="canonical" href="https://docs.privacydatacoin.com/code/source-map.html">
+  <link rel="icon" href="../favicon.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Montserrat:wght@600;700&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../../css/docs.css">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Montserrat:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/docs.css">
 </head>
 <body>
-  <button class="menu" type="button" data-menu aria-expanded="false">Menu</button>
+  <canvas class="rain" aria-hidden="true"></canvas>
+  <button class="menu-btn" type="button" data-menu aria-expanded="false">Menu</button>
   <div class="backdrop" data-backdrop hidden></div>
   <aside class="sidebar">
-    <a class="brand" href="../../index.html">
-      <img src="../../graphics/pdc-logo.png" alt="PDC">
-      <small>Documentation</small>
+    <a class="brand" href="../index.html">
+      <img class="brand-mark" src="../graphics/pdc-mark.png" width="42" height="42" alt="">
+      <span><strong>PDC</strong><small>Documentation</small></span>
     </a>
+    <a class="release-chip" data-doc-release href="https://github.com/PrivacyDataCoin-Project/PDC/releases/latest"><span data-doc-version>v2.4.2</span></a>
     <input class="search" type="search" placeholder="Filter topics" aria-label="Filter topics">
-    <div class="nav-group"><h2>Learn</h2><a href="../../learn/what-is-pdc.html">What PDC is</a><a href="../../learn/how-it-works.html">How PDC works</a><a href="../../learn/faq.html">FAQ</a></div>
-<div class="nav-group"><h2>Use</h2><a href="../../use/getting-started.html">Getting started</a><a href="../../use/wallets.html">Wallets</a><a href="../../use/security.html">Security and privacy</a><a href="../../use/troubleshooting.html">Troubleshooting</a></div>
-<div class="nav-group"><h2>Build</h2><a href="../../build/from-source.html">Build from source</a><a href="../../build/rpc.html">Node RPC</a><a href="../../build/assets.html">Confidential assets</a><a href="../../build/aliases.html">Aliases</a><a href="../../build/services.html">Escrow, swaps, and offers</a></div>
-<div class="nav-group"><h2>Mine</h2><a href="../../mine/mining.html">Mining</a></div>
-<div class="nav-group"><h2>Stake</h2><a href="../../stake/staking.html">Staking</a><a href="../../stake/proof-of-stake.html">Proof of stake</a></div>
-<div class="nav-group"><h2>Code</h2><a href="../../code/parameters.html">Network parameters</a><a href="../../code/source-map.html" aria-current="page">Source map</a></div>
+    <div class="nav-group"><h2>Learn</h2><a href="../learn/what-is-pdc.html">What PDC is</a><a href="../learn/how-it-works.html">How PDC works</a><a href="../learn/faq.html">FAQ</a></div>
+<div class="nav-group"><h2>Use</h2><a href="../use/getting-started.html">Getting started</a><a href="../use/wallets.html">Wallets</a><a href="../use/security.html">Security and privacy</a><a href="../use/troubleshooting.html">Troubleshooting</a></div>
+<div class="nav-group"><h2>Build</h2><a href="../build/from-source.html">Build from source</a><a href="../build/rpc.html">Node RPC</a><a href="../build/assets.html">Confidential assets</a><a href="../build/aliases.html">Aliases</a><a href="../build/services.html">Escrow, swaps, and offers</a></div>
+<div class="nav-group"><h2>Mine</h2><a href="../mine/mining.html">Mining</a></div>
+<div class="nav-group"><h2>Stake</h2><a href="../stake/staking.html">Staking</a><a href="../stake/proof-of-stake.html">Proof of stake</a></div>
+<div class="nav-group"><h2>Code</h2><a href="../code/parameters.html">Network parameters</a><a href="../code/source-map.html" aria-current="page">Source map</a></div>
   </aside>
   <div class="layout">
     <main>
       <article>
         <p class="kicker">Code</p>
         <h1>Source map</h1>
-        <p>The tree you want is branch <code>pdc</code> of <a href="https://github.com/ArqTras/pdc">ArqTras/pdc</a>. Paths below are from the repository root.</p>
+        <p>The tree you want is branch <code>master</code> of <a href="https://github.com/PrivacyDataCoin-Project/pdc">PrivacyDataCoin-Project/pdc</a>. Paths below are from the repository root.</p>
 <table>
 <thead>
 <tr>
@@ -95,7 +98,7 @@
 </tr>
 <tr>
 <td><code>src/daemon/daemon.cpp</code></td>
-<td><code>daemon</code> entry point and <code>--data-dir</code></td>
+<td><code>daemon</code> target. The binary name is <code>pdcd</code>. <code>--data-dir</code> is read here</td>
 </tr>
 <tr>
 <td><code>src/simplewallet/simplewallet.cpp</code></td>
@@ -138,7 +141,7 @@
 <tbody>
 <tr>
 <td>Desktop wallet and node binaries</td>
-<td><a href="https://github.com/ArqTras/pdc/releases/tag/v2.0.0">Release v2.0.0</a></td>
+<td><a href="https://github.com/PrivacyDataCoin-Project/pdc/releases/latest">PrivacyDataCoin-Project/pdc releases</a>, currently <span data-doc-version>v2.4.2</span></td>
 </tr>
 <tr>
 <td>Project site</td>
@@ -160,8 +163,8 @@
 <p>The generator needs the Python <code>markdown</code> package. It does not contact the network and it does not read the chain. When a constant in <code>currency_config.h</code> changes, edit the matching page under <code>content/</code> and run the generator again.</p>
 <h2 id="names-inside-the-headers">Names inside the headers</h2>
 <p>Several macros still use a historical prefix, including <code>ZANO_HARDFORK_04_ZARCANUM</code>. Those identifiers are how the C++ refers to fork numbers. The chain they configure in this tree is PDC, ticker <code>PDC</code>, formation version 100.</p>
-        <nav class="pager"><a href="../../code/parameters.html">← Network parameters</a></nav>
-        <p class="footer">Facts in this manual come from the <a href="https://github.com/ArqTras/pdc">ArqTras/pdc</a> tree, branch <code>pdc</code>, and from release v2.0.0. The public site is <a href="https://privacydatacoin.com/">privacydatacoin.com</a>. The block explorer is <a href="https://explorer.privacydatacoin.com/">explorer.privacydatacoin.com</a>.</p>
+        <nav class="pager"><a href="../code/parameters.html">← Network parameters</a></nav>
+        <p class="footer">Edition <a data-doc-release href="https://github.com/PrivacyDataCoin-Project/PDC/releases/latest"><span data-doc-version>v2.4.2</span></a> follows the latest release of <a href="https://github.com/PrivacyDataCoin-Project/PDC">PrivacyDataCoin-Project/PDC</a>. The manual is <a href="https://docs.privacydatacoin.com/">docs.privacydatacoin.com</a>. The public site is <a href="https://privacydatacoin.com/">privacydatacoin.com</a>. The block explorer is <a href="https://explorer.privacydatacoin.com/">explorer.privacydatacoin.com</a>.</p>
       </article>
     </main>
     <aside class="toc">
@@ -175,6 +178,8 @@
 
     </aside>
   </div>
-  <script src="../../js/docs.js"></script>
+  <script src="../js/rain.js"></script>
+  <script src="../js/docs.js"></script>
+  <script src="../js/release.js"></script>
 </body>
 </html>

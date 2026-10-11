@@ -45,10 +45,10 @@ SUMMARIES = {
     "learn/what-is-pdc": "The chain, the release, and what a transfer hides.",
     "learn/how-it-works": "Addresses, proofs, consensus, and the block reward.",
     "learn/faq": "Short answers grounded in the source tree.",
-    "use/getting-started": "Install v2.0.0, sync, and make a wallet.",
+    "use/getting-started": "Install the current release, sync, and make a wallet.",
     "use/wallets": "Desktop wallet, simplewallet, and address types.",
     "use/security": "What stays private, and what you still have to protect.",
-    "use/troubleshooting": "Genesis, ports, sync, and the v1 reset.",
+    "use/troubleshooting": "Genesis, ports, and sync.",
     "build/from-source": "Clone, dependencies, and the daemon build.",
     "build/rpc": "JSON-RPC on port 19211, bound to localhost.",
     "build/assets": "Issue a token without revealing transfer amounts.",
@@ -75,8 +75,9 @@ def parse(path: Path):
 
 
 def prefix_for(slug: str) -> str:
-    depth = 0 if slug == "index" else slug.count("/") + 1
-    return "" if depth == 0 else "../" * depth
+    if slug == "index":
+        return ""
+    return "../" * slug.count("/")
 
 
 def render_nav(current: str, prefix: str) -> str:
@@ -93,6 +94,7 @@ def render_nav(current: str, prefix: str) -> str:
 
 def page(slug: str, title: str, section: str, body_html: str, toc_html: str):
     prefix = prefix_for(slug)
+    canonical = "" if slug == "index" else f"{slug}.html"
     idx = next((i for i, (s, _) in enumerate(FLAT) if s == slug), None)
     pager = ""
     if idx is not None:
@@ -113,20 +115,23 @@ def page(slug: str, title: str, section: str, body_html: str, toc_html: str):
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{title} · PDC Docs</title>
   <meta name="description" content="{SUMMARIES.get(slug, title)}">
+  <link rel="canonical" href="https://docs.privacydatacoin.com/{canonical}">
   <link rel="icon" href="{prefix}favicon.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Montserrat:wght@600;700&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Montserrat:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{prefix}css/docs.css">
 </head>
 <body>
-  <button class="menu" type="button" data-menu aria-expanded="false">Menu</button>
+  <canvas class="rain" aria-hidden="true"></canvas>
+  <button class="menu-btn" type="button" data-menu aria-expanded="false">Menu</button>
   <div class="backdrop" data-backdrop hidden></div>
   <aside class="sidebar">
     <a class="brand" href="{home}">
-      <img src="{prefix}graphics/pdc-logo.png" alt="PDC">
-      <small>Documentation</small>
+      <img class="brand-mark" src="{prefix}graphics/pdc-mark.png" width="42" height="42" alt="">
+      <span><strong>PDC</strong><small>Documentation</small></span>
     </a>
+    <a class="release-chip" data-doc-release href="https://github.com/PrivacyDataCoin-Project/PDC/releases/latest"><span data-doc-version>v2.4.2</span></a>
     <input class="search" type="search" placeholder="Filter topics" aria-label="Filter topics">
     {render_nav(slug, prefix)}
   </aside>
@@ -137,7 +142,7 @@ def page(slug: str, title: str, section: str, body_html: str, toc_html: str):
         <h1>{title}</h1>
         {body_html}
         {pager}
-        <p class="footer">Facts in this manual come from the <a href="https://github.com/ArqTras/pdc">ArqTras/pdc</a> tree, branch <code>pdc</code>, and from release v2.0.0. The public site is <a href="https://privacydatacoin.com/">privacydatacoin.com</a>. The block explorer is <a href="https://explorer.privacydatacoin.com/">explorer.privacydatacoin.com</a>.</p>
+        <p class="footer">Edition <a data-doc-release href="https://github.com/PrivacyDataCoin-Project/PDC/releases/latest"><span data-doc-version>v2.4.2</span></a> follows the latest release of <a href="https://github.com/PrivacyDataCoin-Project/PDC">PrivacyDataCoin-Project/PDC</a>. The manual is <a href="https://docs.privacydatacoin.com/">docs.privacydatacoin.com</a>. The public site is <a href="https://privacydatacoin.com/">privacydatacoin.com</a>. The block explorer is <a href="https://explorer.privacydatacoin.com/">explorer.privacydatacoin.com</a>.</p>
       </article>
     </main>
     <aside class="toc">
@@ -145,7 +150,9 @@ def page(slug: str, title: str, section: str, body_html: str, toc_html: str):
       {toc_html or "<p>This page is short.</p>"}
     </aside>
   </div>
+  <script src="{prefix}js/rain.js"></script>
   <script src="{prefix}js/docs.js"></script>
+  <script src="{prefix}js/release.js"></script>
 </body>
 </html>
 """

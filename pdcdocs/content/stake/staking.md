@@ -6,7 +6,7 @@ Staking is how PDC produces proof-of-stake blocks. You leave coins in a wallet t
 
 ## What you need
 
-- A v2.0.0 wallet and a node on the same chain. The desktop wallet runs both.
+- A wallet and a node from release <a data-doc-release href="https://github.com/PrivacyDataCoin-Project/pdc/releases/latest"><span data-doc-version>v2.4.2</span></a>, on the same chain. The desktop wallet runs both.
 - Coins that have aged at least 10 blocks (`POS_MINIMUM_COINSTAKE_AGE`).
 - The process has to keep running. `POS_WALLET_MINING_SCAN_INTERVAL` is 15 seconds, inside a scan window of 10 minutes (`POS_SCAN_WINDOW`).
 

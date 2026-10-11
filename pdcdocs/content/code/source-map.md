@@ -2,7 +2,7 @@
 title: Source map
 ---
 
-The tree you want is branch `pdc` of [ArqTras/pdc](https://github.com/ArqTras/pdc). Paths below are from the repository root.
+The tree you want is branch `master` of [PrivacyDataCoin-Project/pdc](https://github.com/PrivacyDataCoin-Project/pdc). Paths below are from the repository root.
 
 | Path | What lives there |
 | --- | --- |
@@ -19,7 +19,7 @@ The tree you want is branch `pdc` of [ArqTras/pdc](https://github.com/ArqTras/pd
 | `src/rpc/core_rpc_server.cpp` | RPC bind address and `getinfo` assembly |
 | `src/stratum/stratum_server.cpp` | Stratum for external miners |
 | `src/miner/simpleminer.cpp` | In-process proof-of-work miner |
-| `src/daemon/daemon.cpp` | `daemon` entry point and `--data-dir` |
+| `src/daemon/daemon.cpp` | `daemon` target. The binary name is `pdcd`. `--data-dir` is read here |
 | `src/simplewallet/simplewallet.cpp` | Every interactive wallet command |
 | `src/wallet/` | Wallet scan, balances, transaction building |
 | `src/gui/qt-daemon/` | Desktop wallet shell |
@@ -32,7 +32,7 @@ The tree you want is branch `pdc` of [ArqTras/pdc](https://github.com/ArqTras/pd
 
 | Piece | Where it is published |
 | --- | --- |
-| Desktop wallet and node binaries | [Release v2.0.0](https://github.com/ArqTras/pdc/releases/tag/v2.0.0) |
+| Desktop wallet and node binaries | [PrivacyDataCoin-Project/pdc releases](https://github.com/PrivacyDataCoin-Project/pdc/releases/latest), currently <span data-doc-version>v2.4.2</span> |
 | Project site | [privacydatacoin.com](https://privacydatacoin.com/) |
 | Block explorer | [explorer.privacydatacoin.com](https://explorer.privacydatacoin.com/) |
 | Asset whitelist | [api.privacydatacoin.com/assets_whitelist.json](https://api.privacydatacoin.com/assets_whitelist.json) |

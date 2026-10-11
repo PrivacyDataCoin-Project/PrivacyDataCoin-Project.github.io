@@ -32,7 +32,7 @@ The explorer can show blocks, proof type, and public metadata such as aliases. I
 
 ## Why did my v1 wallet stop working?
 
-Release v2.0.0 resets the network. The genesis hash and the peer-to-peer identity changed. Binaries from v1.0.0.7 do not speak this chain. Install v2.0.0 and create or restore a wallet against the new network.
+Install <a data-doc-release href="https://github.com/PrivacyDataCoin-Project/pdc/releases/latest"><span data-doc-version>v2.4.2</span></a> and create or restore a wallet against this network.
 
 ## Are alias fees paid to a foundation?
 

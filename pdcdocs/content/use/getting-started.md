@@ -2,22 +2,29 @@
 title: Getting started
 ---
 
-Use release v2.0.0. It was published on 17 September 2026. The release notes state that this version resets the network and is incompatible with v1.0.0.7.
+Use release <a data-doc-release href="https://github.com/PrivacyDataCoin-Project/PDC/releases/latest"><span data-doc-version>v2.4.2</span></a>, published <span data-doc-date>10 October 2026</span>. That number is the latest release of [PrivacyDataCoin-Project/PDC](https://github.com/PrivacyDataCoin-Project/PDC). Stay on the current release for both the wallet and the node.
 
-Download the files from [the v2.0.0 release](https://github.com/ArqTras/pdc/releases/tag/v2.0.0).
+<div data-release-files>
+<table>
+<thead><tr><th>File</th><th>Role</th><th>Size</th></tr></thead>
+<tbody>
+<tr><td><a href="https://github.com/PrivacyDataCoin-Project/PDC/releases/download/v2.4.2/pdc-linux-x64-gui-2.4.2.9-337176a.AppImage">pdc-linux-x64-gui-2.4.2.9-337176a.AppImage</a></td><td>Linux desktop wallet</td><td>166 MB</td></tr>
+<tr><td><a href="https://github.com/PrivacyDataCoin-Project/PDC/releases/download/v2.4.2/pdc-linux-arm64-gui-2.4.2.9-337176a.AppImage">pdc-linux-arm64-gui-2.4.2.9-337176a.AppImage</a></td><td>Linux desktop wallet</td><td>175 MB</td></tr>
+<tr><td><a href="https://github.com/PrivacyDataCoin-Project/PDC/releases/download/v2.4.2/pdc-windows-x64-gui-2.4.2.9-337176a-installer.exe">pdc-windows-x64-gui-2.4.2.9-337176a-installer.exe</a></td><td>Windows installer</td><td>194 MB</td></tr>
+<tr><td><a href="https://github.com/PrivacyDataCoin-Project/PDC/releases/download/v2.4.2/pdc-windows-x64-gui-2.4.2.9-337176a.zip">pdc-windows-x64-gui-2.4.2.9-337176a.zip</a></td><td>Windows desktop wallet archive</td><td>281 MB</td></tr>
+<tr><td><a href="https://github.com/PrivacyDataCoin-Project/PDC/releases/download/v2.4.2/pdc-macos-arm64-gui-v2.4.2.9.337176a.dmg">pdc-macos-arm64-gui-v2.4.2.9.337176a.dmg</a></td><td>macOS desktop wallet</td><td>271 MB</td></tr>
+<tr><td><a href="https://github.com/PrivacyDataCoin-Project/PDC/releases/download/v2.4.2/pdc-macos-x64-gui-v2.4.2.9.337176a.dmg">pdc-macos-x64-gui-v2.4.2.9.337176a.dmg</a></td><td>macOS desktop wallet</td><td>244 MB</td></tr>
+<tr><td><a href="https://github.com/PrivacyDataCoin-Project/PDC/releases/download/v2.4.2/pdc-linux-x64-cli-2.4.2.9-337176a.tar.bz2">pdc-linux-x64-cli-2.4.2.9-337176a.tar.bz2</a></td><td>Linux daemon and simplewallet</td><td>15.4 MB</td></tr>
+<tr><td><a href="https://github.com/PrivacyDataCoin-Project/PDC/releases/download/v2.4.2/pdc-linux-arm64-cli-2.4.2.9-337176a.tar.bz2">pdc-linux-arm64-cli-2.4.2.9-337176a.tar.bz2</a></td><td>Linux daemon and simplewallet</td><td>15.7 MB</td></tr>
+<tr><td><a href="https://github.com/PrivacyDataCoin-Project/PDC/releases/download/v2.4.2/pdc-windows-x64-cli-2.4.2.9-337176a.zip">pdc-windows-x64-cli-2.4.2.9-337176a.zip</a></td><td>Windows daemon and simplewallet</td><td>108 MB</td></tr>
+<tr><td><a href="https://github.com/PrivacyDataCoin-Project/PDC/releases/download/v2.4.2/pdc-macos-arm64-cli-v2.4.2.9.337176a.tar.bz2">pdc-macos-arm64-cli-v2.4.2.9.337176a.tar.bz2</a></td><td>macOS daemon and simplewallet</td><td>12.7 MB</td></tr>
+<tr><td><a href="https://github.com/PrivacyDataCoin-Project/PDC/releases/download/v2.4.2/pdc-macos-x64-cli-v2.4.2.9.337176a.tar.bz2">pdc-macos-x64-cli-v2.4.2.9.337176a.tar.bz2</a></td><td>macOS daemon and simplewallet</td><td>12.9 MB</td></tr>
+<tr><td><a href="https://github.com/PrivacyDataCoin-Project/PDC/releases/download/v2.4.2/pdc-macos-universal-cli-v2.4.2.9.337176a.tar.bz2">pdc-macos-universal-cli-v2.4.2.9.337176a.tar.bz2</a></td><td>macOS daemon and simplewallet</td><td>25.6 MB</td></tr>
+</tbody>
+</table>
+</div>
 
-| File | Role | Approximate size |
-| --- | --- | --- |
-| `Pdc-GUI-v2.0.0-ubuntu-22.04.AppImage` | Linux desktop wallet | 169 MB |
-| `Pdc-Gui-v2.0.0-ubuntu-22.04.tar.gz` | Linux desktop wallet archive | 164 MB |
-| `Pdc-Gui-v2.0.0-windows.exe` | Windows installer | 98 MB |
-| `Pdc-Gui-v2.0.0-windows.zip` | Windows desktop wallet archive | 116 MB |
-| `Pdc-Gui-v2.0.0-osx.tar.gz` | macOS desktop wallet | 154 MB |
-| `Pdc-v2.0.0-ubuntu-22.04.tar.gz` | Linux daemon and simplewallet | 50 MB |
-| `Pdc-v2.0.0-windows.zip` | Windows daemon and simplewallet | 10 MB |
-| `Pdc-v2.0.0-osx.tar.gz` | macOS daemon and simplewallet | 12 MB |
-
-The GUI binaries in that release are a Qt 6 build. A source build uses Qt 5 WebEngine when it is installed, and Qt 6 otherwise.
+The GUI binaries in that release are a Qt 6.8 build. A source build that should match them uses Qt 6.8.3, as the repository README describes. CMake still accepts Qt 5 if `Qt5WebEngineWidgets` is found. Release builds do not use it.
 
 ## First launch
 
@@ -44,7 +51,7 @@ You can also open [the block explorer](https://explorer.privacydatacoin.com/) an
 From the directory that contains the binaries:
 
 ```text
-./daemon
+./pdcd
 ```
 
 In another terminal, against the default RPC at `127.0.0.1:19211`:
