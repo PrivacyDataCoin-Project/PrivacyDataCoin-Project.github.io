@@ -4,7 +4,7 @@ title: Wallets
 
 Two wallets ship with the project.
 
-The desktop program is the `Pdc` executable. Release v2.0.0 calls it a Qt 6 GUI. It runs a node and a wallet together, which is what staking needs: the wallet has to be online and synced.
+The desktop program is the `Pdc` executable from release <a data-doc-release href="https://github.com/PrivacyDataCoin-Project/pdc/releases/latest"><span data-doc-version>v2.4.2</span></a>. That GUI build uses Qt 6. It runs a node and a wallet together, which is what staking needs: the wallet has to be online and synced.
 
 `simplewallet` is the command-line wallet. It talks to a `daemon` over RPC. Use it on a server, in scripts, and when you want the command list in front of you.
 

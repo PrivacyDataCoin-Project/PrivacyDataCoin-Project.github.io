@@ -4,28 +4,31 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Troubleshooting · PDC Docs</title>
-  <meta name="description" content="Genesis, ports, sync, and the v1 reset.">
-  <link rel="icon" href="../../favicon.png" type="image/png">
+  <meta name="description" content="Genesis, ports, and sync.">
+  <link rel="canonical" href="https://docs.privacydatacoin.com/use/troubleshooting.html">
+  <link rel="icon" href="../favicon.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Montserrat:wght@600;700&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../../css/docs.css">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Montserrat:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/docs.css">
 </head>
 <body>
-  <button class="menu" type="button" data-menu aria-expanded="false">Menu</button>
+  <canvas class="rain" aria-hidden="true"></canvas>
+  <button class="menu-btn" type="button" data-menu aria-expanded="false">Menu</button>
   <div class="backdrop" data-backdrop hidden></div>
   <aside class="sidebar">
-    <a class="brand" href="../../index.html">
-      <img src="../../graphics/pdc-logo.png" alt="PDC">
-      <small>Documentation</small>
+    <a class="brand" href="../index.html">
+      <img class="brand-mark" src="../graphics/pdc-mark.png" width="42" height="42" alt="">
+      <span><strong>PDC</strong><small>Documentation</small></span>
     </a>
+    <a class="release-chip" data-doc-release href="https://github.com/PrivacyDataCoin-Project/PDC/releases/latest"><span data-doc-version>v2.4.2</span></a>
     <input class="search" type="search" placeholder="Filter topics" aria-label="Filter topics">
-    <div class="nav-group"><h2>Learn</h2><a href="../../learn/what-is-pdc.html">What PDC is</a><a href="../../learn/how-it-works.html">How PDC works</a><a href="../../learn/faq.html">FAQ</a></div>
-<div class="nav-group"><h2>Use</h2><a href="../../use/getting-started.html">Getting started</a><a href="../../use/wallets.html">Wallets</a><a href="../../use/security.html">Security and privacy</a><a href="../../use/troubleshooting.html" aria-current="page">Troubleshooting</a></div>
-<div class="nav-group"><h2>Build</h2><a href="../../build/from-source.html">Build from source</a><a href="../../build/rpc.html">Node RPC</a><a href="../../build/assets.html">Confidential assets</a><a href="../../build/aliases.html">Aliases</a><a href="../../build/services.html">Escrow, swaps, and offers</a></div>
-<div class="nav-group"><h2>Mine</h2><a href="../../mine/mining.html">Mining</a></div>
-<div class="nav-group"><h2>Stake</h2><a href="../../stake/staking.html">Staking</a><a href="../../stake/proof-of-stake.html">Proof of stake</a></div>
-<div class="nav-group"><h2>Code</h2><a href="../../code/parameters.html">Network parameters</a><a href="../../code/source-map.html">Source map</a></div>
+    <div class="nav-group"><h2>Learn</h2><a href="../learn/what-is-pdc.html">What PDC is</a><a href="../learn/how-it-works.html">How PDC works</a><a href="../learn/faq.html">FAQ</a></div>
+<div class="nav-group"><h2>Use</h2><a href="../use/getting-started.html">Getting started</a><a href="../use/wallets.html">Wallets</a><a href="../use/security.html">Security and privacy</a><a href="../use/troubleshooting.html" aria-current="page">Troubleshooting</a></div>
+<div class="nav-group"><h2>Build</h2><a href="../build/from-source.html">Build from source</a><a href="../build/rpc.html">Node RPC</a><a href="../build/assets.html">Confidential assets</a><a href="../build/aliases.html">Aliases</a><a href="../build/services.html">Escrow, swaps, and offers</a></div>
+<div class="nav-group"><h2>Mine</h2><a href="../mine/mining.html">Mining</a></div>
+<div class="nav-group"><h2>Stake</h2><a href="../stake/staking.html">Staking</a><a href="../stake/proof-of-stake.html">Proof of stake</a></div>
+<div class="nav-group"><h2>Code</h2><a href="../code/parameters.html">Network parameters</a><a href="../code/source-map.html">Source map</a></div>
   </aside>
   <div class="layout">
     <main>
@@ -35,7 +38,7 @@
         <h2 id="the-wallet-cannot-find-the-network">The wallet cannot find the network</h2>
 <p>Confirm three facts:</p>
 <ol>
-<li>The binary is from v2.0.0, not v1.0.0.7. The old release uses a different genesis and a different peer-to-peer identity.</li>
+<li>The binary is release <a data-doc-release href="https://github.com/PrivacyDataCoin-Project/pdc/releases/latest"><span data-doc-version>v2.4.2</span></a>.</li>
 <li>The node is using mainnet ports: peer-to-peer 19121, RPC 19211. A testnet build moves these. Testnet peer-to-peer is <code>19211 + 100</code> (19311), testnet RPC is 19111, and testnet stratum is 19888.</li>
 <li>The hardcoded seed <code>169.58.142.131:19121</code> is reachable from your network. The node also accepts extra seeds with <code>--seed-node</code>.</li>
 </ol>
@@ -53,10 +56,10 @@
 <h2 id="staking-never-pays">Staking never pays</h2>
 <p>Staking pays only while the wallet and a synced node are online. Closing the laptop pauses it. There is no minimum balance beyond the 10-block coinstake age, but a larger balance wins the stake lottery more often. Rewards are the block reward of 1 PDC, subject to the block-size rule, not a quoted interest rate.</p>
 <p>A long run of proof-of-stake blocks is capped at 21. After that the chain expects proof of work before another long stake run.</p>
-<h2 id="the-gui-and-the-readme-disagree-about-qt">The GUI and the README disagree about Qt</h2>
-<p>The repository README still documents a Qt 5.11.2 install path. The current <code>CMakeLists.txt</code> looks for Qt 5 WebEngine first and uses Qt 6 when that package is missing. The published v2.0.0 GUI binaries are the Qt 6 build described in the release notes. Prefer those binaries unless you intend to compile.</p>
-        <nav class="pager"><a href="../../use/security.html">← Security and privacy</a><a href="../../build/from-source.html">Build from source →</a></nav>
-        <p class="footer">Facts in this manual come from the <a href="https://github.com/ArqTras/pdc">ArqTras/pdc</a> tree, branch <code>pdc</code>, and from release v2.0.0. The public site is <a href="https://privacydatacoin.com/">privacydatacoin.com</a>. The block explorer is <a href="https://explorer.privacydatacoin.com/">explorer.privacydatacoin.com</a>.</p>
+<h2 id="the-gui-and-an-old-qt-note">The GUI and an old Qt note</h2>
+<p>The repository README builds the GUI with Qt 6.8.3. CMake still accepts Qt 5 if <code>Qt5WebEngineWidgets</code> is found. Release builds do not use Qt 5. The published GUI binaries for <a data-doc-release href="https://github.com/PrivacyDataCoin-Project/PDC/releases/latest"><span data-doc-version>v2.4.2</span></a> are the Qt 6.8 build. Prefer those binaries unless you intend to compile. The <a href="../build/from-source.html">build page</a> follows the README.</p>
+        <nav class="pager"><a href="../use/security.html">← Security and privacy</a><a href="../build/from-source.html">Build from source →</a></nav>
+        <p class="footer">Edition <a data-doc-release href="https://github.com/PrivacyDataCoin-Project/PDC/releases/latest"><span data-doc-version>v2.4.2</span></a> follows the latest release of <a href="https://github.com/PrivacyDataCoin-Project/PDC">PrivacyDataCoin-Project/PDC</a>. The manual is <a href="https://docs.privacydatacoin.com/">docs.privacydatacoin.com</a>. The public site is <a href="https://privacydatacoin.com/">privacydatacoin.com</a>. The block explorer is <a href="https://explorer.privacydatacoin.com/">explorer.privacydatacoin.com</a>.</p>
       </article>
     </main>
     <aside class="toc">
@@ -69,12 +72,14 @@
 <li><a href="#balance-looks-wrong">Balance looks wrong</a></li>
 <li><a href="#a-transfer-will-not-send">A transfer will not send</a></li>
 <li><a href="#staking-never-pays">Staking never pays</a></li>
-<li><a href="#the-gui-and-the-readme-disagree-about-qt">The GUI and the README disagree about Qt</a></li>
+<li><a href="#the-gui-and-an-old-qt-note">The GUI and an old Qt note</a></li>
 </ul>
 </div>
 
     </aside>
   </div>
-  <script src="../../js/docs.js"></script>
+  <script src="../js/rain.js"></script>
+  <script src="../js/docs.js"></script>
+  <script src="../js/release.js"></script>
 </body>
 </html>

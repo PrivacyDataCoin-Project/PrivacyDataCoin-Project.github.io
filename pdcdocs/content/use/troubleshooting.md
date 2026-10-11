@@ -6,7 +6,7 @@ title: Troubleshooting
 
 Confirm three facts:
 
-1. The binary is from v2.0.0, not v1.0.0.7. The old release uses a different genesis and a different peer-to-peer identity.
+1. The binary is release <a data-doc-release href="https://github.com/PrivacyDataCoin-Project/pdc/releases/latest"><span data-doc-version>v2.4.2</span></a>.
 2. The node is using mainnet ports: peer-to-peer 19121, RPC 19211. A testnet build moves these. Testnet peer-to-peer is `19211 + 100` (19311), testnet RPC is 19111, and testnet stratum is 19888.
 3. The hardcoded seed `169.58.142.131:19121` is reachable from your network. The node also accepts extra seeds with `--seed-node`.
 
@@ -38,6 +38,6 @@ Staking pays only while the wallet and a synced node are online. Closing the lap
 
 A long run of proof-of-stake blocks is capped at 21. After that the chain expects proof of work before another long stake run.
 
-## The GUI and the README disagree about Qt
+## The GUI and an old Qt note
 
-The repository README still documents a Qt 5.11.2 install path. The current `CMakeLists.txt` looks for Qt 5 WebEngine first and uses Qt 6 when that package is missing. The published v2.0.0 GUI binaries are the Qt 6 build described in the release notes. Prefer those binaries unless you intend to compile.
+The repository README builds the GUI with Qt 6.8.3. CMake still accepts Qt 5 if `Qt5WebEngineWidgets` is found. Release builds do not use Qt 5. The published GUI binaries for <a data-doc-release href="https://github.com/PrivacyDataCoin-Project/PDC/releases/latest"><span data-doc-version>v2.4.2</span></a> are the Qt 6.8 build. Prefer those binaries unless you intend to compile. The [build page](../build/from-source.md) follows the README.

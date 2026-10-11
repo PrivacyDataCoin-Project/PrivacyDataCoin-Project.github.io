@@ -5,37 +5,40 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Build from source · PDC Docs</title>
   <meta name="description" content="Clone, dependencies, and the daemon build.">
-  <link rel="icon" href="../../favicon.png" type="image/png">
+  <link rel="canonical" href="https://docs.privacydatacoin.com/build/from-source.html">
+  <link rel="icon" href="../favicon.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Montserrat:wght@600;700&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../../css/docs.css">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Montserrat:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/docs.css">
 </head>
 <body>
-  <button class="menu" type="button" data-menu aria-expanded="false">Menu</button>
+  <canvas class="rain" aria-hidden="true"></canvas>
+  <button class="menu-btn" type="button" data-menu aria-expanded="false">Menu</button>
   <div class="backdrop" data-backdrop hidden></div>
   <aside class="sidebar">
-    <a class="brand" href="../../index.html">
-      <img src="../../graphics/pdc-logo.png" alt="PDC">
-      <small>Documentation</small>
+    <a class="brand" href="../index.html">
+      <img class="brand-mark" src="../graphics/pdc-mark.png" width="42" height="42" alt="">
+      <span><strong>PDC</strong><small>Documentation</small></span>
     </a>
+    <a class="release-chip" data-doc-release href="https://github.com/PrivacyDataCoin-Project/PDC/releases/latest"><span data-doc-version>v2.4.2</span></a>
     <input class="search" type="search" placeholder="Filter topics" aria-label="Filter topics">
-    <div class="nav-group"><h2>Learn</h2><a href="../../learn/what-is-pdc.html">What PDC is</a><a href="../../learn/how-it-works.html">How PDC works</a><a href="../../learn/faq.html">FAQ</a></div>
-<div class="nav-group"><h2>Use</h2><a href="../../use/getting-started.html">Getting started</a><a href="../../use/wallets.html">Wallets</a><a href="../../use/security.html">Security and privacy</a><a href="../../use/troubleshooting.html">Troubleshooting</a></div>
-<div class="nav-group"><h2>Build</h2><a href="../../build/from-source.html" aria-current="page">Build from source</a><a href="../../build/rpc.html">Node RPC</a><a href="../../build/assets.html">Confidential assets</a><a href="../../build/aliases.html">Aliases</a><a href="../../build/services.html">Escrow, swaps, and offers</a></div>
-<div class="nav-group"><h2>Mine</h2><a href="../../mine/mining.html">Mining</a></div>
-<div class="nav-group"><h2>Stake</h2><a href="../../stake/staking.html">Staking</a><a href="../../stake/proof-of-stake.html">Proof of stake</a></div>
-<div class="nav-group"><h2>Code</h2><a href="../../code/parameters.html">Network parameters</a><a href="../../code/source-map.html">Source map</a></div>
+    <div class="nav-group"><h2>Learn</h2><a href="../learn/what-is-pdc.html">What PDC is</a><a href="../learn/how-it-works.html">How PDC works</a><a href="../learn/faq.html">FAQ</a></div>
+<div class="nav-group"><h2>Use</h2><a href="../use/getting-started.html">Getting started</a><a href="../use/wallets.html">Wallets</a><a href="../use/security.html">Security and privacy</a><a href="../use/troubleshooting.html">Troubleshooting</a></div>
+<div class="nav-group"><h2>Build</h2><a href="../build/from-source.html" aria-current="page">Build from source</a><a href="../build/rpc.html">Node RPC</a><a href="../build/assets.html">Confidential assets</a><a href="../build/aliases.html">Aliases</a><a href="../build/services.html">Escrow, swaps, and offers</a></div>
+<div class="nav-group"><h2>Mine</h2><a href="../mine/mining.html">Mining</a></div>
+<div class="nav-group"><h2>Stake</h2><a href="../stake/staking.html">Staking</a><a href="../stake/proof-of-stake.html">Proof of stake</a></div>
+<div class="nav-group"><h2>Code</h2><a href="../code/parameters.html">Network parameters</a><a href="../code/source-map.html">Source map</a></div>
   </aside>
   <div class="layout">
     <main>
       <article>
         <p class="kicker">Build</p>
         <h1>Build from source</h1>
-        <p>The repository is <a href="https://github.com/ArqTras/pdc">github.com/ArqTras/pdc</a>, branch <code>pdc</code>. Clone it with submodules. A clone without <code>--recursive</code> misses the bundled libraries and will not configure.</p>
-<pre><code class="language-text">git clone --recursive https://github.com/ArqTras/pdc.git -b pdc
+        <p>The repository is <a href="https://github.com/PrivacyDataCoin-Project/PDC">github.com/PrivacyDataCoin-Project/PDC</a>, branch <code>master</code>. Clone it with submodules. A clone without <code>--recursive</code> misses the bundled libraries and will not configure.</p>
+<pre><code class="language-text">git clone --recursive https://github.com/PrivacyDataCoin-Project/PDC.git
 </code></pre>
-<p>The README in that repository is the long-form build guide. This page is the map. If a checksum or an installer URL in the README and a newer release note disagree, follow the file you are actually building.</p>
+<p>The steps below follow the README in that repository. Release CI builds on those pins. If a checksum in the README changes, follow the README of the commit you are building.</p>
 <h2 id="what-the-build-produces">What the build produces</h2>
 <table>
 <thead>
@@ -48,77 +51,148 @@
 <tbody>
 <tr>
 <td><code>daemon</code></td>
-<td><code>daemon</code></td>
+<td><code>build/src/pdcd</code></td>
 <td>A full node</td>
 </tr>
 <tr>
 <td><code>simplewallet</code></td>
-<td><code>simplewallet</code></td>
+<td><code>build/src/simplewallet</code></td>
 <td>Command-line wallet</td>
 </tr>
 <tr>
-<td><code>Pdc</code></td>
-<td>desktop wallet</td>
-<td>Everyday use and staking with a GUI</td>
+<td><code>connectivity_tool</code></td>
+<td><code>build/src/connectivity_tool</code></td>
+<td>Peer and network checks</td>
 </tr>
 <tr>
-<td><code>connectivity_tool</code></td>
-<td>connectivity tool</td>
-<td>Peer and network checks</td>
+<td><code>Pdc</code></td>
+<td><code>build/src/Pdc</code></td>
+<td>Desktop wallet and GUI staking</td>
 </tr>
 </tbody>
 </table>
 <p>CMake also builds test targets (<code>coretests</code>, <code>crypto-tests</code>, and others) under <code>tests/</code>. They are for contributors, not for mainnet.</p>
-<h2 id="dependencies-the-readme-lists">Dependencies the README lists</h2>
+<h2 id="versions-the-readme-uses">Versions the README uses</h2>
+<p>These are the versions in the current release CI (Linux AppImage, Windows, and macOS jobs on <code>master</code>).</p>
 <table>
 <thead>
 <tr>
 <th>Component</th>
-<th>Recommended in the README</th>
+<th>Release CI</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>GCC</td>
-<td>9.4.0</td>
+<td>GCC, Linux</td>
+<td>11, on Ubuntu 22.04</td>
+</tr>
+<tr>
+<td>MSVC</td>
+<td>2022 (<code>windows-2022</code>)</td>
+</tr>
+<tr>
+<td>Xcode</td>
+<td>macOS 14 or newer host. The GUI deployment target is macOS 12.0 because of Qt 6.8</td>
 </tr>
 <tr>
 <td>CMake</td>
-<td>3.26.3</td>
+<td>3.16 or newer</td>
 </tr>
 <tr>
 <td>Boost</td>
-<td>1.84</td>
+<td>1.84.0, static libraries</td>
 </tr>
 <tr>
 <td>OpenSSL</td>
-<td>1.1.1w</td>
+<td>3.5.8 on Linux and Windows, 3.5.7 on macOS, static (<code>no-shared</code>)</td>
 </tr>
 <tr>
 <td>Qt, GUI only</td>
-<td>5.11.2 in the README. The CMake file uses Qt 6 when Qt 5 WebEngine is absent</td>
+<td>6.8.3. Modules: Widgets, WebEngine, WebChannel, PrintSupport, plus WebEngine's <code>qtpositioning</code> and <code>qtserialport</code></td>
 </tr>
 </tbody>
 </table>
-<p>Recommended Linux in the README is Ubuntu 20.04 or 22.04 LTS. The v2.0.0 GUI AppImage is built for Ubuntu 22.04.</p>
-<p>Server packages from the README:</p>
-<pre><code class="language-text">sudo apt-get install -y build-essential g++ curl autotools-dev libicu-dev libbz2-dev cmake git screen checkinstall zlib1g-dev
+<p>CMake still accepts Qt 5 if <code>Qt5WebEngineWidgets</code> is found. Release builds do not use Qt 5. <code>utils/build_script_linux.sh</code> is an older helper. Its Qt 5 library list does not match Qt 6.8.3. Use the <code>cmake</code> commands below.</p>
+<p>A server build produces <code>pdcd</code>, <code>simplewallet</code>, and <code>connectivity_tool</code>. A GUI build also produces <code>Pdc</code>.</p>
+<h2 id="linux">Linux</h2>
+<p>Use Ubuntu 22.04 if the binary should match the release AppImage. Newer hosts can compile. The shipped x64 image is still built on 22.04.</p>
+<p>Server packages:</p>
+<pre><code class="language-text">sudo apt-get update
+sudo apt-get install -y --no-install-recommends \
+  build-essential g++ cmake git curl ca-certificates bzip2 pkg-config perl \
+  libbz2-dev zlib1g-dev libicu-dev
 </code></pre>
-<p>The GUI package list adds <code>mesa-common-dev</code> and <code>libglu1-mesa-dev</code>.</p>
-<h2 id="a-node-only-build">A node-only build</h2>
-<p>After Boost and OpenSSL are installed and <code>BOOST_ROOT</code> and <code>OPENSSL_ROOT_DIR</code> point at them:</p>
-<pre><code class="language-text">cd pdc
-mkdir build &amp;&amp; cd build
-cmake ..
-make -j1 daemon simplewallet
+<p>GUI packages are the server list plus the libraries the Linux CI image installs before Qt 6.8:</p>
+<pre><code class="language-text">sudo apt-get update
+sudo apt-get install -y --no-install-recommends \
+  build-essential g++ cmake git curl ca-certificates bzip2 pkg-config perl \
+  python3 python3-pip python3-venv \
+  libbz2-dev zlib1g-dev libicu-dev \
+  libevent-dev libminizip-dev \
+  libgl1-mesa-dev libglu1-mesa-dev \
+  libnss3 libnspr4 \
+  libxkbcommon-x11-0 libxcb-cursor0 libxcb-xinerama0 \
+  desktop-file-utils file patchelf rsync
 </code></pre>
-<p><code>-j1</code> is the README's safe default. Raise it only when the machine has enough RAM. A testnet binary is <code>cmake -D TESTNET=TRUE ..</code>. Testnet uses different ports and different hard-fork heights. Do not point a testnet binary at mainnet peers and expect them to sync.</p>
-<p>The Linux GUI script in the repository is <code>utils/build_script_linux.sh</code>. Windows builds start from <code>utils/configure_local_paths.cmd</code> and a Visual Studio generator script. macOS builds start from <code>utils/macosx_build_config.command</code> and <code>utils/build_script_mac_osx.sh</code>. Those scripts are the platform-specific steps. Read them before you run them, and edit the paths so they match the machine.</p>
+<p><code>python3</code> is only needed to install Qt with <code>aqtinstall</code>. <code>patchelf</code> is only needed when packing an AppImage.</p>
+<p>Build static Boost 1.84.0. <code>STATIC=TRUE</code> needs <code>runtime-link=static</code>, and <code>find_package</code> asks for the <code>log</code> component.</p>
+<pre><code class="language-text">curl -fL -O https://archives.boost.io/release/1.84.0/source/boost_1_84_0.tar.bz2
+echo &quot;cc4b893acf645c9d4b698e9a0f08ca8846aa5d6c68275c14c3e7949c24109454  boost_1_84_0.tar.bz2&quot; | sha256sum -c
+tar -xjf boost_1_84_0.tar.bz2
+cd boost_1_84_0
+./bootstrap.sh --prefix=$HOME/boost_1_84_0 \
+  --with-libraries=system,filesystem,thread,date_time,chrono,regex,serialization,atomic,program_options,locale,timer,log
+./b2 -j&quot;$(nproc)&quot; link=static runtime-link=static threading=multi variant=release install
+cd ..
+</code></pre>
+<p>Install Qt 6.8.3 for a GUI build:</p>
+<pre><code class="language-text">python3 -m pip install --user 'aqtinstall==3.3.0'
+python3 -m aqt install-qt linux desktop 6.8.3 linux_gcc_64 -O &quot;$HOME/Qt&quot; \
+  -m qtwebengine qtwebchannel qtpositioning qtserialport
+</code></pre>
+<p>The prefix used below is <code>$HOME/Qt/6.8.3/gcc_64</code>.</p>
+<p>Build static OpenSSL 3.5.8. Do not point the build at OpenSSL 1.1.1.</p>
+<pre><code class="language-text">curl -fL -o openssl-3.5.8.tar.gz \
+  https://github.com/openssl/openssl/releases/download/openssl-3.5.8/openssl-3.5.8.tar.gz
+echo &quot;a8f84a39918ec6415ce765d9b429d313ba97b8143169c172e734b9514464f5b2  openssl-3.5.8.tar.gz&quot; | sha256sum -c
+tar -xzf openssl-3.5.8.tar.gz
+cd openssl-3.5.8
+./Configure linux-x86_64 no-shared no-tests --prefix=$HOME/openssl --openssldir=$HOME/openssl --libdir=lib
+make -j&quot;$(nproc)&quot; &amp;&amp; make install_sw
+cd ..
+</code></pre>
+<p>Export the prefixes, then open a new shell so they apply:</p>
+<pre><code class="language-text">export BOOST_ROOT=$HOME/boost_1_84_0
+export BOOST_LIBRARYDIR=$HOME/boost_1_84_0/lib
+export OPENSSL_ROOT_DIR=$HOME/openssl
+export QT_PREFIX_PATH=$HOME/Qt/6.8.3/gcc_64
+</code></pre>
+<p>From the repository root, a server build:</p>
+<pre><code class="language-text">cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DSTATIC=TRUE -DBUILD_GUI=FALSE \
+  -DBOOST_ROOT=&quot;$BOOST_ROOT&quot; -DBOOST_LIBRARYDIR=&quot;$BOOST_LIBRARYDIR&quot; \
+  -DOPENSSL_ROOT_DIR=&quot;$OPENSSL_ROOT_DIR&quot; -DOPENSSL_USE_STATIC_LIBS=TRUE
+cmake --build build --parallel --target daemon simplewallet connectivity_tool
+</code></pre>
+<p>A GUI build:</p>
+<pre><code class="language-text">cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DSTATIC=TRUE -DBUILD_GUI=TRUE \
+  -DBOOST_ROOT=&quot;$BOOST_ROOT&quot; -DBOOST_LIBRARYDIR=&quot;$BOOST_LIBRARYDIR&quot; \
+  -DOPENSSL_ROOT_DIR=&quot;$OPENSSL_ROOT_DIR&quot; -DOPENSSL_USE_STATIC_LIBS=TRUE \
+  -DCMAKE_PREFIX_PATH=&quot;$QT_PREFIX_PATH&quot;
+cmake --build build --parallel --target Pdc
+</code></pre>
+<p>The GUI must link the shared <code>libstdc++</code> that Qt loads. Do not pass <code>-static-libstdc++</code> to <code>Pdc</code>. <code>STATIC=TRUE</code> applies that flag only to the CLI targets. Add <code>-DTESTNET=TRUE</code> for a testnet build. Testnet uses different ports and different hard-fork heights. Do not point a testnet binary at mainnet peers and expect them to sync.</p>
+<p>The release AppImage is built on Ubuntu 22.04. It does not bundle GL, EGL, or X11. If the GUI fails to start, install the host libraries named by <code>utils/Pdc_appimage_wrapper.sh</code>:</p>
+<pre><code class="language-text">sudo apt-get install -y libegl1 libgl1 libopengl0 libxcb-xinerama0 libx11-6 libxcb1
+</code></pre>
+<p>On a machine without FUSE: <code>APPIMAGE_EXTRACT_AND_RUN=1 ./pdc-linux-x64-gui-*.AppImage</code>.</p>
+<h2 id="windows-and-macos">Windows and macOS</h2>
+<p>Windows release CI uses Windows 11 x64, MSVC 2022, Boost 1.84.0 (static libs, shared CRT), OpenSSL 3.5.8 (static libs, shared CRT), and Qt 6.8.3 (MSVC 2022 x64, WebEngine). Edit paths in <code>utils/configure_local_paths.cmd</code>, run the Visual Studio generator script for your MSVC version, and build <code>Pdc.sln</code>. Deploy the GUI with <code>windeployqt</code> on <code>Pdc.exe</code>, then copy <code>src/gui/qt-daemon/html</code> next to the executable.</p>
+<p>macOS release CI uses Boost 1.84.0, OpenSSL 3.5.7, and Qt 6.8.3. The GUI deployment target is macOS 12.0. Set the variables in <code>utils/macosx_build_config.command</code>. A self-signed “Pdc” code-signing certificate is required for the GUI script <code>utils/build_script_mac_osx.sh</code>.</p>
 <h2 id="where-the-node-writes-data">Where the node writes data</h2>
 <p>The default data directory is <code>~/.PDC</code> on Linux, <code>~/Library/Application Support/PDC</code> on macOS, and the roaming <code>PDC</code> folder on 64-bit Windows. <code>--data-dir</code> overrides it.</p>
 <p>Inside that folder the chain uses a directory whose name starts with <code>blockchain_</code> and ends with <code>_v2</code>. The peer cache is <code>p2pstate.bin</code>. The GUI keeps <code>gui_settings.json</code> and <code>gui_secure_conf.bin</code>. The miner config file name is <code>miner_conf.json</code>.</p>
-        <nav class="pager"><a href="../../use/troubleshooting.html">← Troubleshooting</a><a href="../../build/rpc.html">Node RPC →</a></nav>
-        <p class="footer">Facts in this manual come from the <a href="https://github.com/ArqTras/pdc">ArqTras/pdc</a> tree, branch <code>pdc</code>, and from release v2.0.0. The public site is <a href="https://privacydatacoin.com/">privacydatacoin.com</a>. The block explorer is <a href="https://explorer.privacydatacoin.com/">explorer.privacydatacoin.com</a>.</p>
+        <nav class="pager"><a href="../use/troubleshooting.html">← Troubleshooting</a><a href="../build/rpc.html">Node RPC →</a></nav>
+        <p class="footer">Edition <a data-doc-release href="https://github.com/PrivacyDataCoin-Project/PDC/releases/latest"><span data-doc-version>v2.4.2</span></a> follows the latest release of <a href="https://github.com/PrivacyDataCoin-Project/PDC">PrivacyDataCoin-Project/PDC</a>. The manual is <a href="https://docs.privacydatacoin.com/">docs.privacydatacoin.com</a>. The public site is <a href="https://privacydatacoin.com/">privacydatacoin.com</a>. The block explorer is <a href="https://explorer.privacydatacoin.com/">explorer.privacydatacoin.com</a>.</p>
       </article>
     </main>
     <aside class="toc">
@@ -126,14 +200,17 @@ make -j1 daemon simplewallet
       <div class="toc">
 <ul>
 <li><a href="#what-the-build-produces">What the build produces</a></li>
-<li><a href="#dependencies-the-readme-lists">Dependencies the README lists</a></li>
-<li><a href="#a-node-only-build">A node-only build</a></li>
+<li><a href="#versions-the-readme-uses">Versions the README uses</a></li>
+<li><a href="#linux">Linux</a></li>
+<li><a href="#windows-and-macos">Windows and macOS</a></li>
 <li><a href="#where-the-node-writes-data">Where the node writes data</a></li>
 </ul>
 </div>
 
     </aside>
   </div>
-  <script src="../../js/docs.js"></script>
+  <script src="../js/rain.js"></script>
+  <script src="../js/docs.js"></script>
+  <script src="../js/release.js"></script>
 </body>
 </html>

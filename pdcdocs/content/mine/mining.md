@@ -44,5 +44,5 @@ The block header shows that RandomARQ work was done and which address the coinba
 
 1. Run `daemon` and wait until it follows the genesis `df35cba5…b10a`.
 2. Point XMRig at `127.0.0.1:19777` with algorithm `rx/arq`, or call `start_mining` if you only want the daemon's own threads.
-3. Use a payout address from a v2.0.0 wallet.
+3. Use a payout address from a wallet built for release <a data-doc-release href="https://github.com/PrivacyDataCoin-Project/pdc/releases/latest"><span data-doc-version>v2.4.2</span></a>.
 4. Expect idle gaps. The 120-second proof-of-work target is an average shared with proof of stake, not a promise that every other block is yours.
