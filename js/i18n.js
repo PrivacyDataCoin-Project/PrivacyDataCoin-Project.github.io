@@ -197,7 +197,7 @@ window.PDC_I18N = {
     "net.k.unlock": "Coinbase unlock",
     "net.v.unlock": "10 blocks",
     "net.k.hf": "Hard forks",
-    "net.v.hf": "HF1 after 20, HF2 after 40, HF3 after 60, HF4 Zarcanum after 100. HF5 is not scheduled.",
+    "net.v.hf": "HF1 after 20, HF2 after 40, HF3 after 60, HF4 Zarcanum after 100. HF5, HF6, and HF7 after 1199. Those forks are active on mainnet.",
     "net.k.alias": "Alias fee",
     "net.v.alias": "Burned. Minimum public short name is 6 characters.",
     "net.k.list": "Asset whitelist",

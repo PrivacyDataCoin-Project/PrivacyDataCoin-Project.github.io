@@ -2,8 +2,8 @@
   const dict = window.PDC_I18N;
   const layers = window.PDC_LAYERS;
   let releaseInfo = {
-    tag: "v2.2.0",
-    date: "30 September 2026",
+    tag: "v3.0.0",
+    date: "19 October 2026",
     url: "https://github.com/PrivacyDataCoin-Project/PDC/releases/latest",
     body: ""
   };
@@ -12,6 +12,14 @@
     return value
       .replaceAll("{version}", releaseInfo.tag)
       .replaceAll("{date}", releaseInfo.date);
+  }
+
+  function escapeHtml(value) {
+    return String(value)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
   }
 
   function formatNotes(body) {
@@ -85,7 +93,7 @@
     host.dataset.current = current;
     host.innerHTML = pack.map((layer) => {
       const pressed = layer.id === current ? "true" : "false";
-      return `<button class="layer" type="button" data-layer="${layer.id}" aria-pressed="${pressed}"><small>${layer.n} · ${layer.hides}</small><strong>${layer.name}</strong></button>`;
+      return `<button class="layer" type="button" data-layer="${escapeHtml(layer.id)}" aria-pressed="${pressed}"><small>${escapeHtml(layer.n)} · ${escapeHtml(layer.hides)}</small><strong>${escapeHtml(layer.name)}</strong></button>`;
     }).join("");
     const layer = pack.find((item) => item.id === current) || pack[0];
     const title = document.querySelector("[data-layer-title]");
@@ -94,7 +102,7 @@
     if (title) title.textContent = layer.title;
     if (body) body.textContent = layer.body;
     if (meta) {
-      meta.innerHTML = layer.meta.map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`).join("");
+      meta.innerHTML = layer.meta.map(([k, v]) => `<dt>${escapeHtml(k)}</dt><dd>${escapeHtml(v)}</dd>`).join("");
     }
     document.querySelectorAll(".slip .field").forEach((field) => {
       field.classList.toggle("sealed", layer.seal.includes(field.dataset.field));
