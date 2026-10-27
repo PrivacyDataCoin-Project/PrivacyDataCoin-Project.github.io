@@ -1,0 +1,10 @@
+#!/bin/sh
+# Strip unwanted trailers without GNU sed -i
+msgfile=$1
+tmp=$(mktemp) || exit 0
+sed -e '/^Co-authored-by:/Id' \
+    -e '/^Signed-off-by:/Id' \
+    -e '/^Made-with:/Id' \
+    -e '/Cursor/Id' \
+    -e '/cursoragent/Id' \
+    "$msgfile" > "$tmp" && mv "$tmp" "$msgfile"

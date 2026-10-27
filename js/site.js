@@ -1,17 +1,45 @@
 (function () {
-  const dict = window.PDC_I18N;
-  const layers = window.PDC_LAYERS;
-  let releaseInfo = {
-    tag: "v3.0.0",
-    date: "19 October 2026",
-    url: "https://github.com/PrivacyDataCoin-Project/PDC/releases/latest",
-    body: ""
-  };
+  document.documentElement.setAttribute("data-theme", "brand");
 
-  function fill(value) {
-    return value
-      .replaceAll("{version}", releaseInfo.tag)
-      .replaceAll("{date}", releaseInfo.date);
+  function fitHeadings() {
+    if (window.matchMedia && window.matchMedia("(max-width: 640px)").matches) {
+      document.querySelectorAll("h1, h2").forEach(function (el) {
+        el.style.fontSize = "";
+      });
+      return;
+    }
+    document.querySelectorAll("h1, .section-head h2, .page-hero h1, main .wrap > h1").forEach(function (el) {
+      el.style.fontSize = "";
+      el.style.whiteSpace = "nowrap";
+      var parent = el.parentElement;
+      if (!parent) return;
+      var maxPx = parseFloat(window.getComputedStyle(el).fontSize) || 40;
+      var minPx = el.tagName === "H1" ? 22 : 18;
+      var size = maxPx;
+      // binary-ish shrink until fits
+      var guard = 0;
+      while (el.scrollWidth > parent.clientWidth && size > minPx && guard < 80) {
+        size -= 0.5;
+        el.style.fontSize = size + "px";
+        guard += 1;
+      }
+    });
+  }
+  fitHeadings();
+  window.addEventListener("resize", function () {
+    clearTimeout(window._pdcFitHeadings);
+    window._pdcFitHeadings = setTimeout(fitHeadings, 120);
+  });
+
+  try { localStorage.removeItem("pdc-redesign-theme"); } catch (e) {}
+
+  var menuBtn = document.querySelector("[data-menu]");
+  var panel = document.querySelector("[data-mobile]");
+  if (menuBtn && panel) {
+    menuBtn.addEventListener("click", function () {
+      var open = panel.classList.toggle("open");
+      menuBtn.setAttribute("aria-expanded", open ? "true" : "false");
+    });
   }
 
   function escapeHtml(value) {
@@ -22,129 +50,128 @@
       .replace(/"/g, "&quot;");
   }
 
-  function formatNotes(body) {
-    const escaped = body.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-    let html = "";
-    let inList = false;
-    function closeList() {
-      if (inList) {
-        html += "</ul>";
-        inList = false;
-      }
-    }
-    function inline(text) {
-      return text
-        .replace(/`([^`]+)`/g, "<code>$1</code>")
-        .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
-    }
-    escaped.split("\n").forEach((line) => {
-      if (line.startsWith("### ")) {
-        closeList();
-        html += "<h3>" + inline(line.slice(4)) + "</h3>";
-      } else if (line.startsWith("## ")) {
-        closeList();
-        html += "<h2>" + inline(line.slice(3)) + "</h2>";
-      } else if (line.startsWith("- ")) {
-        if (!inList) {
-          html += "<ul>";
-          inList = true;
-        }
-        html += "<li>" + inline(line.slice(2)) + "</li>";
-      } else if (line.trim() === "") {
-        closeList();
-      } else {
-        closeList();
-        html += "<p>" + inline(line) + "</p>";
-      }
-    });
-    closeList();
-    return html;
-  }
-
-  function apply() {
-    localStorage.removeItem("pdc-lang");
-    document.documentElement.lang = "en";
-    const table = dict.en;
-    document.querySelectorAll("[data-i18n]").forEach((el) => {
-      const value = table[el.dataset.i18n];
-      if (value == null) return;
-      const text = fill(value);
-      if (el.dataset.i18nHtml === "1") el.innerHTML = text;
-      else el.textContent = text;
-    });
-    document.querySelectorAll("[data-release-url]").forEach((el) => {
-      el.href = releaseInfo.url;
-    });
-    const notes = document.querySelector("[data-release-notes]");
-    if (notes && releaseInfo.body) notes.innerHTML = formatNotes(releaseInfo.body);
-    renderLayers();
-  }
-
-  window.PDC_USE_RELEASE = function (info) {
-    releaseInfo = info;
-    apply();
-  };
-
   function renderLayers() {
-    const host = document.querySelector("[data-layers]");
+    var host = document.querySelector("[data-layers]");
+    var layers = window.PDC_LAYERS;
     if (!host || !layers) return;
-    const pack = layers.en;
-    const current = host.dataset.current || pack[0].id;
+    var current = host.dataset.current || layers[0].id;
     host.dataset.current = current;
-    host.innerHTML = pack.map((layer) => {
-      const pressed = layer.id === current ? "true" : "false";
-      return `<button class="layer" type="button" data-layer="${escapeHtml(layer.id)}" aria-pressed="${pressed}"><small>${escapeHtml(layer.n)} · ${escapeHtml(layer.hides)}</small><strong>${escapeHtml(layer.name)}</strong></button>`;
+    host.innerHTML = layers.map(function (layer) {
+      var pressed = layer.id === current ? "true" : "false";
+      return (
+        '<button class="layer" type="button" data-layer="' + escapeHtml(layer.id) + '" aria-pressed="' + pressed + '">' +
+          "<small>" + escapeHtml(layer.n) + " · " + escapeHtml(layer.hides) + "</small>" +
+          "<strong>" + escapeHtml(layer.name) + "</strong>" +
+        "</button>"
+      );
     }).join("");
-    const layer = pack.find((item) => item.id === current) || pack[0];
-    const title = document.querySelector("[data-layer-title]");
-    const body = document.querySelector("[data-layer-body]");
-    const meta = document.querySelector("[data-layer-meta]");
+    var layer = layers.find(function (item) { return item.id === current; }) || layers[0];
+    var title = document.querySelector("[data-layer-title]");
+    var body = document.querySelector("[data-layer-body]");
+    var meta = document.querySelector("[data-layer-meta]");
     if (title) title.textContent = layer.title;
     if (body) body.textContent = layer.body;
     if (meta) {
-      meta.innerHTML = layer.meta.map(([k, v]) => `<dt>${escapeHtml(k)}</dt><dd>${escapeHtml(v)}</dd>`).join("");
+      meta.innerHTML = layer.meta.map(function (pair) {
+        return "<dt>" + escapeHtml(pair[0]) + "</dt><dd>" + escapeHtml(pair[1]) + "</dd>";
+      }).join("");
     }
-    document.querySelectorAll(".slip .field").forEach((field) => {
-      field.classList.toggle("sealed", layer.seal.includes(field.dataset.field));
+    document.querySelectorAll(".slip .field").forEach(function (field) {
+      field.classList.toggle("sealed", layer.seal.indexOf(field.dataset.field) !== -1);
     });
   }
 
-  document.addEventListener("click", (event) => {
-    const layerBtn = event.target.closest("[data-layer]");
-    if (layerBtn) {
-      const host = document.querySelector("[data-layers]");
-      host.dataset.current = layerBtn.dataset.layer;
-      renderLayers();
-      return;
-    }
-    const menu = event.target.closest("[data-menu]");
-    if (menu) {
-      const side = document.querySelector(".sidebar");
-      const open = !side.classList.contains("open");
-      side.classList.toggle("open", open);
-      const backdrop = document.querySelector("[data-backdrop]");
-      if (backdrop) backdrop.hidden = !open;
-      menu.setAttribute("aria-expanded", open ? "true" : "false");
-      return;
-    }
-    if (event.target.closest("[data-backdrop], .side-nav a")) {
-      const side = document.querySelector(".sidebar");
-      if (side) side.classList.remove("open");
-      const backdrop = document.querySelector("[data-backdrop]");
-      if (backdrop) backdrop.hidden = true;
-      const btn = document.querySelector("[data-menu]");
-      if (btn) btn.setAttribute("aria-expanded", "false");
-    }
+  document.addEventListener("click", function (event) {
+    var layerBtn = event.target.closest("[data-layer]");
+    if (!layerBtn) return;
+    var host = document.querySelector("[data-layers]");
+    if (!host) return;
+    host.dataset.current = layerBtn.dataset.layer;
+    renderLayers();
   });
 
-  const promo = document.querySelector(".promo-video");
-  if (promo) {
-    promo.autoplay = false;
-    promo.muted = false;
-    promo.defaultMuted = false;
-    promo.volume = 1;
-    promo.pause();
+  renderLayers();
+
+  window.PDC_USE_RELEASE = function (info) {
+    var notes = document.querySelector("[data-release-notes]");
+    if (notes && info && info.tag) {
+      notes.textContent = "Latest release " + info.tag + (info.date ? " · " + info.date : "") + ".";
+    }
+  };
+
+  var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var MATRIX_CHARS = "0123456789ABCDEF01アイウエオカキクケコ▓░█#@$%&*";
+
+  function matrixReveal(el, finalText, options) {
+    if (!el) return;
+    var text = String(finalText == null ? "" : finalText);
+    if (!text) return;
+    if (reduceMotion) {
+      el.textContent = text;
+      el.classList.remove("is-decoding");
+      return;
+    }
+    var opts = options || {};
+    var duration = opts.duration || 900 + Math.floor(Math.random() * 500);
+    var started = performance.now();
+    var len = text.length;
+    el.classList.add("is-decoding");
+    if (el._matrixFrame) cancelAnimationFrame(el._matrixFrame);
+
+    function frame(now) {
+      var t = Math.min(1, (now - started) / duration);
+      var reveal = Math.floor(t * len);
+      var out = "";
+      for (var i = 0; i < len; i++) {
+        var ch = text.charAt(i);
+        if (ch === " " || ch === "," || ch === ".") {
+          out += ch;
+        } else if (i < reveal) {
+          out += ch;
+        } else {
+          out += MATRIX_CHARS.charAt(Math.floor(Math.random() * MATRIX_CHARS.length));
+        }
+      }
+      el.textContent = out;
+      if (t < 1) {
+        el._matrixFrame = requestAnimationFrame(frame);
+      } else {
+        el.textContent = text;
+        el.classList.remove("is-decoding");
+        el._matrixFrame = null;
+      }
+    }
+    el._matrixFrame = requestAnimationFrame(frame);
   }
 
-  apply();
+  // Static / HUD values decode on load (staggered Matrix reveal)
+  document.querySelectorAll("[data-matrix][data-matrix-final]").forEach(function (el, i) {
+    el.textContent = "—";
+    setTimeout(function () {
+      matrixReveal(el, el.getAttribute("data-matrix-final"), {
+        duration: 700 + Math.floor(Math.random() * 500)
+      });
+    }, 80 + i * 70);
+  });
+
+  var heightEl = document.querySelector("[data-height]");
+  var peersEl = document.querySelector("[data-peers]");
+  var aliasesEl = document.querySelector("[data-aliases]");
+  if (heightEl || peersEl) {
+    fetch("https://explorer.privacydatacoin.com/api/get_info")
+      .then(function (r) { if (!r.ok) throw new Error(String(r.status)); return r.json(); })
+      .then(function (info) {
+        if (heightEl && info.height != null) {
+          matrixReveal(heightEl, Number(info.height).toLocaleString("en-US"), { duration: 1100 });
+        }
+        if (peersEl) {
+          var n = (info.incoming_connections_count || 0) + (info.outgoing_connections_count || 0);
+          matrixReveal(peersEl, String(n), { duration: 850 });
+        }
+        if (aliasesEl && info.alias_count != null) {
+          matrixReveal(aliasesEl, String(info.alias_count), { duration: 900 });
+        }
+      })
+      .catch(function () {});
+  }
 })();

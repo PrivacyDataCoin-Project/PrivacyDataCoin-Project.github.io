@@ -1,79 +1,128 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="brand">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <title>Download · Privacy Data Coin</title>
-  <meta name="description" content="Download Privacy Data Coin desktop wallets and node binaries for Linux, Windows, and macOS.">
+  <meta name="description" content="Download the PDC desktop wallet, node binaries, and iOS TestFlight beta. Latest GitHub release for Linux, Windows, and macOS.">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <meta name="author" content="Privacy Data Coin">
+  <meta name="theme-color" content="#05060d">
   <link rel="canonical" href="https://privacydatacoin.com/download.html">
-  <link rel="icon" href="favicon.png" type="image/png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Privacy Data Coin">
+  <meta property="og:title" content="Download · Privacy Data Coin">
+  <meta property="og:description" content="Download the PDC desktop wallet, node binaries, and iOS TestFlight beta. Latest GitHub release for Linux, Windows, and macOS.">
+  <meta property="og:url" content="https://privacydatacoin.com/download.html">
+  <meta property="og:image" content="https://privacydatacoin.com/graphics/pdc-logo.png">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Download · Privacy Data Coin">
+  <meta name="twitter:description" content="Download the PDC desktop wallet, node binaries, and iOS TestFlight beta. Latest GitHub release for Linux, Windows, and macOS.">
+  <meta name="twitter:image" content="https://privacydatacoin.com/graphics/pdc-logo.png">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Download · Privacy Data Coin",
+  "description": "Download the PDC desktop wallet, node binaries, and iOS TestFlight beta. Latest GitHub release for Linux, Windows, and macOS.",
+  "url": "https://privacydatacoin.com/download.html",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "Privacy Data Coin",
+    "url": "https://privacydatacoin.com/"
+  },
+  "inLanguage": "en"
+}
+  </script>
+<link rel="icon" href="favicon.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Montserrat:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/site.css?v=20261023b">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/site.css?v=20261027">
 </head>
 <body>
-  <canvas class="rain" aria-hidden="true"></canvas>
-  <a class="skip" href="#main">Skip to content</a>
-  <button class="menu-btn" type="button" data-menu aria-controls="sidebar" aria-expanded="false">Menu</button>
-  <div class="backdrop" data-backdrop hidden></div>
-  <aside class="sidebar" id="sidebar">
-    <a class="brand" href="index.html">
-      <img src="graphics/pdc-logo.png" alt="PDC">
-      <small>Privacy Data Coin</small>
-    </a>
-    <nav class="side-nav" aria-label="Sections">
-        <a href="features.html" data-i18n="nav.features">Protocol</a>
-        <a href="network.html" data-i18n="nav.network">Network</a>
-        <a href="trade.html" data-i18n="nav.trade">Trade</a>
-        <a href="download.html" aria-current="page" data-i18n="nav.download">Download</a>
-        <a href="privacy.html" data-i18n="nav.privacy">Privacy</a>
-        <a href="https://docs.privacydatacoin.com/" data-i18n="nav.docs">Docs</a>
-        <a href="https://github.com/PrivacyDataCoin-Project/PDC" target="_blank" rel="noreferrer" data-i18n="nav.source">Source</a>
-    </nav>
-  </aside>
-
-  <main id="main">
-    <div class="wrap page-hero">
-      <p class="kicker" data-i18n="down.kicker">Release</p>
-      <h1 data-i18n="down.title">Download a wallet or a node.</h1>
-      <p class="lede release-notes" data-i18n="down.lede" data-release-notes>Files from the latest GitHub release of PrivacyDataCoin-Project/PDC.</p>
-    </div>
-    <section class="wrap">
-      <div class="downloads">
-        <article class="card dl" data-release-files="gui">
-          <span class="index">GUI</span>
-          <h3 data-i18n="down.gui">Desktop wallet</h3>
-          <a href="https://github.com/PrivacyDataCoin-Project/PDC/releases/latest/download/Pdc-GUI-v2.2.0-ubuntu-22.04.AppImage">Linux AppImage <span>169 MB</span></a>
-          <a href="https://github.com/PrivacyDataCoin-Project/PDC/releases/latest/download/Pdc-Gui-v2.2.0-ubuntu-22.04.tar.gz">Linux tar.gz <span>164 MB</span></a>
-          <a href="https://github.com/PrivacyDataCoin-Project/PDC/releases/latest/download/Pdc-Gui-v2.2.0-windows.exe">Windows installer <span>97 MB</span></a>
-          <a href="https://github.com/PrivacyDataCoin-Project/PDC/releases/latest/download/Pdc-Gui-v2.2.0-windows.zip">Windows zip <span>116 MB</span></a>
-          <a href="https://github.com/PrivacyDataCoin-Project/PDC/releases/latest/download/Pdc-Gui-v2.2.0-osx.tar.gz">macOS tar.gz <span>154 MB</span></a>
-        </article>
-        <article class="card dl" data-release-files="cli">
-          <span class="index">CLI</span>
-          <h3 data-i18n="down.cli">Daemon and simplewallet</h3>
-          <a href="https://github.com/PrivacyDataCoin-Project/PDC/releases/latest/download/Pdc-v2.2.0-ubuntu-22.04.tar.gz">Linux tar.gz <span>50 MB</span></a>
-          <a href="https://github.com/PrivacyDataCoin-Project/PDC/releases/latest/download/Pdc-v2.2.0-windows.zip">Windows zip <span>9.6 MB</span></a>
-          <a href="https://github.com/PrivacyDataCoin-Project/PDC/releases/latest/download/Pdc-v2.2.0-osx.tar.gz">macOS tar.gz <span>12 MB</span></a>
-        </article>
-        <article class="card">
-          <span class="index">SRC</span>
-          <h3 data-i18n="down.build">Build from source</h3>
-          <p data-i18n="down.build.d">Clone with submodules: git clone --recursive https://github.com/PrivacyDataCoin-Project/PDC.git. Dependencies, Boost, OpenSSL, and Qt are documented in the repository README. The GUI binaries in the release are the short path.</p>
-          <p><a class="btn" href="https://github.com/PrivacyDataCoin-Project/PDC/blob/master/README.md">README</a></p>
-        </article>
+  <div class="dot-matrix" aria-hidden="true"></div>
+  <div class="noise" aria-hidden="true"></div>
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="index.html">
+        <img src="graphics/pdc-logo.png" alt="PDC">
+        <span><strong>Privacy Data Coin</strong></span>
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="news.html">News</a>
+        <a href="apps.html">Trade</a>
+        <a href="oracle.html">Oracle</a>
+        <a href="protocol.html">Protocol</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="network.html">Network</a>
+        <a href="https://docs.privacydatacoin.com/" target="_blank" rel="noreferrer">Docs</a>
+      </nav>
+                        <div class="nav-cta">
+        <button class="menu-btn" type="button" data-menu aria-expanded="false">Menu</button>
+        <a class="btn" href="download.html">Download</a>
+        <a class="btn" href="https://explorer.privacydatacoin.com/" target="_blank" rel="noreferrer">Explorer</a>
       </div>
-      <p class="note" data-i18n="down.warn">Genesis of this network: df35cba557c857756f20612ce3c9d2aa315d0ae8fc2aaffe6c5c59d37e00b10a. Mainnet ports: P2P 19121, RPC 19211, stratum 19777.</p>
-    </section>
+    </div>
+    <div class="mobile-panel" data-mobile>
+      <a href="index.html">Home</a>
+      <a href="news.html">News</a>
+      <a href="apps.html">Trade</a>
+      <a href="oracle.html">Oracle</a>
+      <a href="protocol.html">Protocol</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="network.html">Network</a>
+      <a href="https://docs.privacydatacoin.com/" target="_blank" rel="noreferrer">Docs</a>
+      <a href="download.html" aria-current="page">Download</a>
+      <a href="https://explorer.privacydatacoin.com/" target="_blank" rel="noreferrer">Explorer</a>
+      <a href="mailto:privacydatacoin@proton.me">Mail</a>
+      <a href="https://matrix.privacydatacoin.com/" target="_blank" rel="noreferrer">Matrix</a>
+      <a href="https://t.me/privacydatacoin" target="_blank" rel="noreferrer">Telegram</a>
+    </div>
+  </header>
+  <main class="wrap">
+    <div class="page-hero">
+      <p class="section-kicker">Release</p>
+      <h1>Download a wallet or a node.</h1>
+      <p class="lede" data-release-notes>Files from the latest GitHub release of PrivacyDataCoin-Project/PDC.</p>
+    </div>
+    <div class="downloads">
+      <article class="card dl" data-release-files="gui">
+        <span class="index">GUI</span>
+        <h3>Desktop wallet</h3>
+        <a href="https://github.com/PrivacyDataCoin-Project/PDC/releases/latest">Open latest release <span>GitHub</span></a>
+      </article>
+      <article class="card dl" data-release-files="cli">
+        <span class="index">CLI</span>
+        <h3>Daemon and simplewallet</h3>
+        <a href="https://github.com/PrivacyDataCoin-Project/PDC/releases/latest">Open latest release <span>GitHub</span></a>
+      </article>
+      <article class="card dl">
+        <span class="index">iOS</span>
+        <h3>PDC Wallet on iPhone</h3>
+        <a href="https://testflight.apple.com/join/NwmhAhfi" target="_blank" rel="noreferrer">Join TestFlight beta <span>Apple</span></a>
+        <a href="https://apps.apple.com/app/id6818298023" target="_blank" rel="noreferrer">App Store listing <span>when live</span></a>
+      </article>
+      <article class="card src-card">
+        <span class="index">SRC</span>
+        <h3>Build from source</h3>
+        <p>Clone with submodules:</p>
+        <pre class="clone-cmd"><code>git clone --recursive https://github.com/PrivacyDataCoin-Project/PDC.git</code></pre>
+        <p>Dependencies are in the repository README.</p>
+        <p class="actions" style="margin-top:1rem"><a class="btn" href="https://github.com/PrivacyDataCoin-Project/PDC/blob/master/README.md" target="_blank" rel="noreferrer">README</a></p>
+      </article>
+    </div>
+    <p class="note" style="margin-top:1.2rem">Genesis: <code>df35cba557c857756f20612ce3c9d2aa315d0ae8fc2aaffe6c5c59d37e00b10a</code>. Ports: P2P 19121, RPC 19211, stratum 19777.</p>
   </main>
-  <footer class="wrap site-footer">
-    <span data-i18n="footer.tag">Privacy Data Coin. Parameters taken from the pdc source tree.</span>
-    <span><a href="mailto:privacydatacoin@proton.me">privacydatacoin@proton.me</a> · <a href="https://t.me/privacydatacoin" target="_blank" rel="noreferrer">Telegram</a></span>
+      <footer class="wrap site-footer">
+    <span>Privacy Data Coin.</span>
+    <span><a href="https://x.com/PrivacyDataCoin" target="_blank" rel="noreferrer">X</a> · <a href="https://www.reddit.com/r/PrivacyDataCoinPDC/" target="_blank" rel="noreferrer">Reddit</a> · <a href="https://medium.com/@privacydatacoin" target="_blank" rel="noreferrer">Medium</a> · <a href="https://bitcointalk.org/index.php?topic=5595680.0" target="_blank" rel="noreferrer">Bitcointalk</a> · <a href="mailto:privacydatacoin@proton.me">Mail</a> · <a href="https://t.me/privacydatacoin" target="_blank" rel="noreferrer">Telegram</a> · <a href="https://matrix.privacydatacoin.com/" target="_blank" rel="noreferrer">Matrix</a></span>
+    <span><a href="https://github.com/PrivacyDataCoin-Project/PDC" target="_blank" rel="noreferrer">Source</a> · <a href="privacy.html">Privacy</a></span>
   </footer>
-  <script src="js/rain.js?v=20261023b"></script>
-  <script src="js/i18n.js?v=20261023b"></script>
-  <script src="js/site.js?v=20261023b"></script>
-  <script src="js/release.js?v=20261023b"></script>
+  <script src="js/site.js?v=20261027b"></script>
+  <script src="js/release.js?v=20261027b"></script>
 </body>
 </html>

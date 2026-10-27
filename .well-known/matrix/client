@@ -1,0 +1,23 @@
+{
+  "m.homeserver": {
+    "base_url": "https://matrix.privacydatacoin.com"
+  },
+  "m.identity_server": {
+    "base_url": "https://vector.im"
+  },
+  "org.matrix.msc3575.proxy": {
+    "url": "https://matrix.privacydatacoin.com"
+  },
+  "io.element.matrix_rtc": {
+    "base_url": "https://matrix.privacydatacoin.com"
+  },
+  "im.vector.riot.jitsi": {
+    "preferredDomain": "meet.jit.si"
+  },
+  "org.matrix.msc4143.rtc_foci": [
+    {
+      "type": "livekit",
+      "livekit_service_url": "https://matrixrtc.element.io"
+    }
+  ]
+}

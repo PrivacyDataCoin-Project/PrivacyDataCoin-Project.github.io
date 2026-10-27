@@ -1,87 +1,153 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="brand">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <title>Network · Privacy Data Coin</title>
-  <meta name="description" content="PDC mainnet parameters: genesis, ports, RandomARQ, block reward, hard forks, and address prefixes.">
+  <meta name="description" content="PDC mainnet parameters and live explorer stats: block height, reward, RandomARQ, Zarcanum, ports, seed, and hard forks.">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <meta name="author" content="Privacy Data Coin">
+  <meta name="theme-color" content="#05060d">
   <link rel="canonical" href="https://privacydatacoin.com/network.html">
-  <link rel="icon" href="favicon.png" type="image/png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Privacy Data Coin">
+  <meta property="og:title" content="Network · Privacy Data Coin">
+  <meta property="og:description" content="PDC mainnet parameters and live explorer stats: block height, reward, RandomARQ, Zarcanum, ports, seed, and hard forks.">
+  <meta property="og:url" content="https://privacydatacoin.com/network.html">
+  <meta property="og:image" content="https://privacydatacoin.com/graphics/pdc-logo.png">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Network · Privacy Data Coin">
+  <meta name="twitter:description" content="PDC mainnet parameters and live explorer stats: block height, reward, RandomARQ, Zarcanum, ports, seed, and hard forks.">
+  <meta name="twitter:image" content="https://privacydatacoin.com/graphics/pdc-logo.png">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Network · Privacy Data Coin",
+  "description": "PDC mainnet parameters and live explorer stats: block height, reward, RandomARQ, Zarcanum, ports, seed, and hard forks.",
+  "url": "https://privacydatacoin.com/network.html",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "Privacy Data Coin",
+    "url": "https://privacydatacoin.com/"
+  },
+  "inLanguage": "en"
+}
+  </script>
+<link rel="icon" href="favicon.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Montserrat:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/site.css?v=20261023b">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/site.css?v=20261027c">
 </head>
 <body>
-  <canvas class="rain" aria-hidden="true"></canvas>
-  <a class="skip" href="#main">Skip to content</a>
-  <button class="menu-btn" type="button" data-menu aria-controls="sidebar" aria-expanded="false">Menu</button>
-  <div class="backdrop" data-backdrop hidden></div>
-  <aside class="sidebar" id="sidebar">
-    <a class="brand" href="index.html">
-      <img src="graphics/pdc-logo.png" alt="PDC">
-      <small>Privacy Data Coin</small>
-    </a>
-    <nav class="side-nav" aria-label="Sections">
-        <a href="features.html" data-i18n="nav.features">Protocol</a>
-        <a href="network.html" aria-current="page" data-i18n="nav.network">Network</a>
-        <a href="trade.html" data-i18n="nav.trade">Trade</a>
-        <a href="download.html" data-i18n="nav.download">Download</a>
-        <a href="privacy.html" data-i18n="nav.privacy">Privacy</a>
-        <a href="https://docs.privacydatacoin.com/" data-i18n="nav.docs">Docs</a>
-        <a href="https://github.com/PrivacyDataCoin-Project/PDC" target="_blank" rel="noreferrer" data-i18n="nav.source">Source</a>
-    </nav>
-  </aside>
-
-  <main id="main">
-    <div class="wrap page-hero">
-      <p class="kicker" data-i18n="net.kicker">Network identity</p>
-      <h1 data-i18n="net.title">The numbers a node actually boots with.</h1>
-      <p class="lede" data-i18n="net.lede">The table comes from src/currency_core/currency_config.h and from the v3.0.0 release notes. When the sources change, this page should change with them.</p>
-      <p class="actions"><a class="btn primary" href="https://explorer.privacydatacoin.com/" data-i18n="net.explorer">Open the block explorer</a></p>
-    </div>
-    <section class="wrap">
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr><th>Parameter</th><th>Value</th></tr>
-          </thead>
-          <tbody>
-            <tr><td data-i18n="net.k.ticker">Ticker</td><td><code>PDC</code></td></tr>
-            <tr><td data-i18n="net.k.formation">Formation version</td><td>100</td></tr>
-            <tr><td>Genesis</td><td><code>df35cba557c857756f20612ce3c9d2aa315d0ae8fc2aaffe6c5c59d37e00b10a</code></td></tr>
-            <tr><td>Premine</td><td>0</td></tr>
-            <tr><td data-i18n="net.k.reward">Block reward</td><td data-i18n="net.v.reward">1 PDC, flat at every height</td></tr>
-            <tr><td data-i18n="net.k.decimals">Decimals</td><td>12</td></tr>
-            <tr><td data-i18n="net.k.fee">Default fee</td><td>0.01 PDC</td></tr>
-            <tr><td data-i18n="net.k.target">Block target</td><td data-i18n="net.v.target">60 seconds</td></tr>
-            <tr><td data-i18n="net.k.targets">PoW / PoS targets</td><td data-i18n="net.v.targets">120 seconds / 120 seconds</td></tr>
-            <tr><td data-i18n="net.k.pow">Proof of work</td><td data-i18n="net.v.pow">RandomARQ, epoch length 2,048, 43-byte blob</td></tr>
-            <tr><td data-i18n="net.k.pos">Proof of stake</td><td data-i18n="net.v.pos">From height 0. Coinstake age 10 blocks. Zarcanum after height 100.</td></tr>
-            <tr><td data-i18n="net.k.run">PoS run limit</td><td data-i18n="net.v.run">21 sequential PoS blocks</td></tr>
-            <tr><td data-i18n="net.k.decoy">Decoy set</td><td data-i18n="net.v.decoy">10 default, 15 mandatory after hard fork 4</td></tr>
-            <tr><td data-i18n="net.k.unlock">Coinbase unlock</td><td data-i18n="net.v.unlock">10 blocks</td></tr>
-            <tr><td>P2P / RPC / stratum</td><td>19121 / 19211 / 19777</td></tr>
-            <tr><td data-i18n="net.seed">Hardcoded seed node</td><td><code>169.58.142.131:19121</code></td></tr>
-            <tr><td data-i18n="home.explorer">Block explorer</td><td><a href="https://explorer.privacydatacoin.com/">explorer.privacydatacoin.com</a></td></tr>
-            <tr><td data-i18n="net.k.hf">Hard forks</td><td data-i18n="net.v.hf">HF1 after 20, HF2 after 40, HF3 after 60, HF4 Zarcanum after 100. HF5, HF6, and HF7 after 1199. Those forks are active on mainnet.</td></tr>
-            <tr><td data-i18n="net.k.alias">Alias fee</td><td data-i18n="net.v.alias">Burned. Minimum public short name is 6 characters.</td></tr>
-            <tr><td data-i18n="net.k.list">Asset whitelist</td><td><code>https://api.privacydatacoin.com/assets_whitelist.json</code></td></tr>
-          </tbody>
-        </table>
+  <div class="dot-matrix" aria-hidden="true"></div>
+  <div class="noise" aria-hidden="true"></div>
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="index.html">
+        <img src="graphics/pdc-logo.png" alt="PDC">
+        <span><strong>Privacy Data Coin</strong></span>
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="news.html">News</a>
+        <a href="apps.html">Trade</a>
+        <a href="oracle.html">Oracle</a>
+        <a href="protocol.html">Protocol</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="network.html" aria-current="page">Network</a>
+        <a href="https://docs.privacydatacoin.com/" target="_blank" rel="noreferrer">Docs</a>
+      </nav>
+      <div class="nav-cta">
+        <button class="menu-btn" type="button" data-menu aria-expanded="false">Menu</button>
+        <a class="btn" href="download.html">Download</a>
+        <a class="btn" href="https://explorer.privacydatacoin.com/" target="_blank" rel="noreferrer">Explorer</a>
       </div>
-      <h2 data-i18n="net.h2" style="margin-top:2.2rem">Addresses</h2>
-      <p class="note" data-i18n="net.addr">A standard address starts with Px, an integrated address with iP, an auditable address with aPx, and an auditable integrated address with aiPX. There are 12 decimal places. The default and minimum fee is 0.01 PDC.</p>
-    </section>
+    </div>
+    <div class="mobile-panel" data-mobile>
+      <a href="index.html">Home</a>
+      <a href="news.html">News</a>
+      <a href="apps.html">Trade</a>
+      <a href="oracle.html">Oracle</a>
+      <a href="protocol.html">Protocol</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="network.html" aria-current="page">Network</a>
+      <a href="https://docs.privacydatacoin.com/" target="_blank" rel="noreferrer">Docs</a>
+      <a href="download.html">Download</a>
+      <a href="https://explorer.privacydatacoin.com/" target="_blank" rel="noreferrer">Explorer</a>
+      <a href="mailto:privacydatacoin@proton.me">Mail</a>
+      <a href="https://matrix.privacydatacoin.com/" target="_blank" rel="noreferrer">Matrix</a>
+      <a href="https://t.me/privacydatacoin" target="_blank" rel="noreferrer">Telegram</a>
+    </div>
+  </header>
+
+  <main class="wrap" style="padding-top:2.4rem;padding-bottom:2rem">
+    <p class="section-kicker">Network // HUD</p>
+    <h1>Live chain and boot identity.</h1>
+    <p class="lede">Explorer feed on the left. Constants from <code>currency_config.h</code> on the right. Hard forks 5–7 are active on mainnet.</p>
+
+    <div class="network-hud" style="margin-top:1.5rem">
+      <aside class="panel panel-wide" aria-label="Network live panel">
+        <div class="panel-head">
+          <span>PDC network // live</span>
+          <span>Explorer feed</span>
+        </div>
+        <div class="stats stats-wide" data-matrix-stats>
+          <div class="stat"><b data-height data-matrix>—</b><span>Block height</span></div>
+          <div class="stat"><b data-matrix data-matrix-final="1 PDC">1 PDC</b><span>Block reward</span></div>
+          <div class="stat"><b data-matrix data-matrix-final="60s">60s</b><span>Block target</span></div>
+          <div class="stat"><b data-peers data-matrix>—</b><span>Peer links</span></div>
+          <div class="stat"><b data-matrix data-matrix-final="0">0</b><span>Premine</span></div>
+          <div class="stat"><b data-aliases data-matrix>—</b><span>Aliases</span></div>
+        </div>
+        <div class="panel-bar">
+          <span>RandomARQ + Zarcanum</span>
+          <span>■ Privacy layer active</span>
+        </div>
+        <div class="panel-foot" aria-hidden="true"></div>
+      </aside>
+
+      <aside class="panel panel-wide" aria-label="Network identity panel">
+        <div class="panel-head">
+          <span>Node identity // static</span>
+          <span>currency_config.h</span>
+        </div>
+        <div class="hud-list">
+          <div class="hud-row"><span>Ticker</span><b data-matrix data-matrix-final="PDC">—</b></div>
+          <div class="hud-row"><span>Premine</span><b data-matrix data-matrix-final="0">—</b></div>
+          <div class="hud-row"><span>Reward</span><b data-matrix data-matrix-final="1 PDC flat">—</b></div>
+          <div class="hud-row"><span>Target</span><b data-matrix data-matrix-final="60s hybrid">—</b></div>
+          <div class="hud-row"><span>PoW</span><b data-matrix data-matrix-final="RandomARQ / 2048">—</b></div>
+          <div class="hud-row"><span>PoS</span><b data-matrix data-matrix-final="Zarcanum">—</b></div>
+          <div class="hud-row"><span>Hard forks</span><b data-matrix data-matrix-final="HF 7 · HF8 @ 50k">—</b></div>
+          <div class="hud-row"><span>Ports</span><b data-matrix data-matrix-final="19121 / 19211 / 19777">—</b></div>
+          <div class="hud-row"><span>Seed</span><b data-matrix data-matrix-final="169.58.142.131:19121">—</b></div>
+          <div class="hud-row"><span>Addresses</span><b data-matrix data-matrix-final="Px / iP / aPx / aiPX">—</b></div>
+          <div class="hud-row"><span>Fee</span><b data-matrix data-matrix-final="0.01 PDC">—</b></div>
+          <div class="hud-row"><span>Explorer</span><a href="https://explorer.privacydatacoin.com/" target="_blank" rel="noreferrer"><b data-matrix data-matrix-final="explorer.privacydatacoin.com">—</b></a></div>
+        </div>
+        <div class="panel-bar">
+          <span>Genesis</span>
+          <span class="hud-hash" data-matrix data-matrix-final="df35cba5…7e00b10a">—</span>
+        </div>
+        <div class="panel-foot" aria-hidden="true"></div>
+      </aside>
+    </div>
+
+    <p class="note" style="margin-top:1.1rem">
+      Full genesis:
+      <code>df35cba557c857756f20612ce3c9d2aa315d0ae8fc2aaffe6c5c59d37e00b10a</code>
+    </p>
   </main>
+
   <footer class="wrap site-footer">
-    <span data-i18n="footer.tag">Privacy Data Coin. Parameters taken from the pdc source tree.</span>
-    <span><a href="mailto:privacydatacoin@proton.me">privacydatacoin@proton.me</a> · <a href="https://t.me/privacydatacoin" target="_blank" rel="noreferrer">Telegram</a></span>
-    <span><a href="https://github.com/PrivacyDataCoin-Project/PDC/blob/master/src/currency_core/currency_config.h">currency_config.h</a></span>
+    <span>Privacy Data Coin.</span>
+    <span><a href="https://x.com/PrivacyDataCoin" target="_blank" rel="noreferrer">X</a> · <a href="https://www.reddit.com/r/PrivacyDataCoinPDC/" target="_blank" rel="noreferrer">Reddit</a> · <a href="https://medium.com/@privacydatacoin" target="_blank" rel="noreferrer">Medium</a> · <a href="https://bitcointalk.org/index.php?topic=5595680.0" target="_blank" rel="noreferrer">Bitcointalk</a> · <a href="mailto:privacydatacoin@proton.me">Mail</a> · <a href="https://t.me/privacydatacoin" target="_blank" rel="noreferrer">Telegram</a> · <a href="https://matrix.privacydatacoin.com/" target="_blank" rel="noreferrer">Matrix</a></span>
+    <span><a href="https://github.com/PrivacyDataCoin-Project/PDC" target="_blank" rel="noreferrer">Source</a> · <a href="privacy.html">Privacy</a></span>
   </footer>
-  <script src="js/rain.js?v=20261023b"></script>
-  <script src="js/i18n.js?v=20261023b"></script>
-  <script src="js/site.js?v=20261023b"></script>
-  <script src="js/release.js?v=20261023b"></script>
+  <script src="js/site.js?v=20261027d"></script>
 </body>
 </html>

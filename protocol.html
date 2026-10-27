@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="brand">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Protocol · Privacy Data Coin</title>
+  <meta name="description" content="PDC privacy stack: stealth addresses, d/v-CLSAG, commitments, confidential assets, and Zarcanum staking. Mechanisms written into the core.">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <meta name="author" content="Privacy Data Coin">
+  <meta name="theme-color" content="#05060d">
+  <link rel="canonical" href="https://privacydatacoin.com/protocol.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Privacy Data Coin">
+  <meta property="og:title" content="Protocol · Privacy Data Coin">
+  <meta property="og:description" content="PDC privacy stack: stealth addresses, d/v-CLSAG, commitments, confidential assets, and Zarcanum staking. Mechanisms written into the core.">
+  <meta property="og:url" content="https://privacydatacoin.com/protocol.html">
+  <meta property="og:image" content="https://privacydatacoin.com/graphics/pdc-logo.png">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Protocol · Privacy Data Coin">
+  <meta name="twitter:description" content="PDC privacy stack: stealth addresses, d/v-CLSAG, commitments, confidential assets, and Zarcanum staking. Mechanisms written into the core.">
+  <meta name="twitter:image" content="https://privacydatacoin.com/graphics/pdc-logo.png">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Protocol · Privacy Data Coin",
+  "description": "PDC privacy stack: stealth addresses, d/v-CLSAG, commitments, confidential assets, and Zarcanum staking. Mechanisms written into the core.",
+  "url": "https://privacydatacoin.com/protocol.html",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "Privacy Data Coin",
+    "url": "https://privacydatacoin.com/"
+  },
+  "inLanguage": "en"
+}
+  </script>
+<link rel="icon" href="favicon.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/site.css?v=20261027">
+</head>
+<body>
+  <div class="dot-matrix" aria-hidden="true"></div>
+  <div class="noise" aria-hidden="true"></div>
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="index.html">
+        <img src="graphics/pdc-logo.png" alt="PDC">
+        <span><strong>Privacy Data Coin</strong></span>
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="news.html">News</a>
+        <a href="apps.html">Trade</a>
+        <a href="oracle.html">Oracle</a>
+        <a href="protocol.html" aria-current="page">Protocol</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="network.html">Network</a>
+        <a href="https://docs.privacydatacoin.com/" target="_blank" rel="noreferrer">Docs</a>
+      </nav>
+                        <div class="nav-cta">
+        <button class="menu-btn" type="button" data-menu aria-expanded="false">Menu</button>
+        <a class="btn" href="download.html">Download</a>
+        <a class="btn" href="https://explorer.privacydatacoin.com/" target="_blank" rel="noreferrer">Explorer</a>
+      </div>
+    </div>
+    <div class="mobile-panel" data-mobile>
+      <a href="index.html">Home</a>
+      <a href="news.html">News</a>
+      <a href="apps.html">Trade</a>
+      <a href="oracle.html">Oracle</a>
+      <a href="protocol.html" aria-current="page">Protocol</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="network.html">Network</a>
+      <a href="https://docs.privacydatacoin.com/" target="_blank" rel="noreferrer">Docs</a>
+      <a href="download.html">Download</a>
+      <a href="https://explorer.privacydatacoin.com/" target="_blank" rel="noreferrer">Explorer</a>
+      <a href="mailto:privacydatacoin@proton.me">Mail</a>
+      <a href="https://matrix.privacydatacoin.com/" target="_blank" rel="noreferrer">Matrix</a>
+      <a href="https://t.me/privacydatacoin" target="_blank" rel="noreferrer">Telegram</a>
+    </div>
+  </header>
+  <main class="wrap" style="padding-top:2.8rem">
+    <p class="section-kicker">Protocol</p>
+    <h1>Mechanisms written into the PDC core.</h1>
+    <p class="lede">The names below are the names in the code. The text says what each one hides or enables on this network.</p>
+    <div class="grid-2" style="margin-top:1.5rem">
+      <article class="card"><span class="index">01 · Stealth</span><h3>Stealth addresses</h3><p>An output pays a one-time address. The published wallet address does not appear on the chain as the receiver of the transfer.</p></article>
+      <article class="card"><span class="index">02 · Ring</span><h3>d/v-CLSAG</h3><p>An input is signed together with decoys. The default set has 10 members. From hard fork 4 the mandatory set has 15.</p></article>
+      <article class="card"><span class="index">03 · Amount</span><h3>Commitments and Bulletproofs+</h3><p>The amount stays in a Pedersen commitment. Zero-knowledge proofs show the transaction is valid without printing the number.</p></article>
+      <article class="card"><span class="index">04 · Asset</span><h3>Confidential assets</h3><p>The asset id on a wallet transfer is blinded. An observer cannot tell PDC from a token issued on the same chain.</p></article>
+      <article class="card"><span class="index">05 · Stake</span><h3>Zarcanum</h3><p>Hidden-amount proof of stake after height 100. Odds follow the stake. The balance stays in a commitment.</p></article>
+      <article class="card"><span class="index">06 · Consensus</span><h3>RandomARQ + PoS</h3><p>PoW and PoS each target 120 seconds. Together they set a 60-second block target. A PoS run is capped at 21 in a row.</p></article>
+    </div>
+  </main>
+      <footer class="wrap site-footer">
+    <span>Privacy Data Coin.</span>
+    <span><a href="https://x.com/PrivacyDataCoin" target="_blank" rel="noreferrer">X</a> · <a href="https://www.reddit.com/r/PrivacyDataCoinPDC/" target="_blank" rel="noreferrer">Reddit</a> · <a href="https://medium.com/@privacydatacoin" target="_blank" rel="noreferrer">Medium</a> · <a href="https://bitcointalk.org/index.php?topic=5595680.0" target="_blank" rel="noreferrer">Bitcointalk</a> · <a href="mailto:privacydatacoin@proton.me">Mail</a> · <a href="https://t.me/privacydatacoin" target="_blank" rel="noreferrer">Telegram</a> · <a href="https://matrix.privacydatacoin.com/" target="_blank" rel="noreferrer">Matrix</a></span>
+    <span><a href="https://github.com/PrivacyDataCoin-Project/PDC" target="_blank" rel="noreferrer">Source</a> · <a href="privacy.html">Privacy</a></span>
+  </footer>
+  <script src="js/site.js?v=20261027"></script>
+</body>
+</html>

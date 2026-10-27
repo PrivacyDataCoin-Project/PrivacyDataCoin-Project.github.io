@@ -11,16 +11,18 @@
 
   function rank(name) {
     const n = name.toLowerCase();
+    const arch = n.includes("arm64") || n.includes("aarch64") ? 1 : 0;
     const os = n.includes("ubuntu") || n.includes("linux") || n.includes("appimage") ? 0
       : n.includes("windows") || n.endsWith(".exe") ? 1
-      : n.includes("osx") || n.includes("mac") ? 2
+      : n.includes("osx") || n.includes("mac") || n.endsWith(".dmg") ? 2
       : 3;
     const kind = n.endsWith(".appimage") ? 0
       : n.endsWith(".exe") ? 1
-      : n.endsWith(".tar.gz") || n.endsWith(".tgz") ? 2
-      : n.endsWith(".zip") ? 3
-      : 4;
-    return os * 10 + kind;
+      : n.endsWith(".dmg") ? 2
+      : n.endsWith(".tar.gz") || n.endsWith(".tgz") || n.endsWith(".tar.bz2") || n.endsWith(".tbz2") ? 3
+      : n.endsWith(".zip") ? 4
+      : 5;
+    return os * 100 + arch * 10 + kind;
   }
 
   function label(name) {
@@ -28,34 +30,52 @@
     let os = "";
     if (n.includes("ubuntu") || n.includes("linux") || n.includes("appimage")) os = "Linux";
     else if (n.includes("windows") || n.endsWith(".exe")) os = "Windows";
-    else if (n.includes("osx") || n.includes("mac")) os = "macOS";
+    else if (n.includes("osx") || n.includes("mac") || n.endsWith(".dmg")) os = "macOS";
+    let arch = "";
+    if (n.includes("arm64") || n.includes("aarch64")) arch = "arm64";
+    else if (n.includes("x86_64") || n.includes("amd64") || n.includes("x64")) arch = "x64";
     let kind = "";
     if (n.endsWith(".appimage")) kind = "AppImage";
     else if (n.endsWith(".exe")) kind = "installer";
-    else if (n.endsWith(".tar.gz") || n.endsWith(".tgz")) kind = "tar.gz";
-    else if (n.endsWith(".zip")) kind = "zip";
     else if (n.endsWith(".dmg")) kind = "dmg";
-    if (os && kind) return os + " " + kind;
-    return name;
+    else if (n.endsWith(".tar.gz") || n.endsWith(".tgz")) kind = "tar.gz";
+    else if (n.endsWith(".tar.bz2") || n.endsWith(".tbz2")) kind = "tar.bz2";
+    else if (n.endsWith(".zip")) kind = "zip";
+    const parts = [os, arch, kind].filter(Boolean);
+    if (parts.length >= 2 || (os && kind)) return parts.join(" ");
+    return name.length > 42 ? name.slice(0, 39) + "…" : name;
   }
 
   function isGui(name) {
     return /gui/i.test(name);
   }
 
+  function isBinaryAsset(name) {
+    const n = name.toLowerCase();
+    if (/\.(sha256|sha512|asc|sig|txt|md)$/i.test(n)) return false;
+    if (/source|src\.|\.deb$|\.rpm$/i.test(n)) return false;
+    return /\.(appimage|exe|dmg|zip|tar\.gz|tgz|tar\.bz2|tbz2)$/i.test(n);
+  }
+
   function paintFiles(info) {
     document.querySelectorAll("[data-release-files]").forEach((box) => {
       const wantGui = box.dataset.releaseFiles === "gui";
-      const assets = info.assets.filter((asset) => isGui(asset.name) === wantGui).sort((a, b) => rank(a.name) - rank(b.name) || a.name.localeCompare(b.name));
+      const assets = info.assets
+        .filter((asset) => isBinaryAsset(asset.name) && isGui(asset.name) === wantGui)
+        .sort((a, b) => rank(a.name) - rank(b.name) || a.name.localeCompare(b.name));
       if (!assets.length) return;
       box.querySelectorAll("a").forEach((link) => link.remove());
       assets.forEach((asset) => {
         const link = document.createElement("a");
         link.href = latestDownload + encodeURIComponent(asset.name);
-        link.append(document.createTextNode(label(asset.name) + " "));
+        link.title = asset.name;
+        const labelEl = document.createElement("span");
+        labelEl.className = "dl-label";
+        labelEl.textContent = label(asset.name);
         const size = document.createElement("span");
+        size.className = "dl-size";
         size.textContent = megabytes(asset.size);
-        link.append(size);
+        link.append(labelEl, size);
         box.append(link);
       });
     });
