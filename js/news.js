@@ -1,7 +1,10 @@
 (function () {
+  var FEED = "https://medium.com/feed/@privacydatacoin";
   var FEED_LOCAL = "/api/medium";
-  var FEED_JINA = "https://r.jina.ai/https://medium.com/feed/@privacydatacoin";
-  var CACHE_KEY = "pdc-medium-news-v1";
+  var FEED_PROXY_RAW = "https://api.allorigins.win/raw?url=" + encodeURIComponent(FEED);
+  var FEED_PROXY_JSON = "https://api.allorigins.win/get?url=" + encodeURIComponent(FEED);
+  var FEED_JINA = "https://r.jina.ai/" + FEED;
+  var CACHE_KEY = "pdc-medium-news-v2";
   var CACHE_MS = 5 * 60 * 1000;
 
   function esc(value) {
@@ -115,15 +118,34 @@
   }
 
   function fetchText(url, headers) {
-    return fetch(url, { headers: headers || {}, credentials: "omit", cache: "no-cache" })
+    return fetch(url, { headers: headers || {}, credentials: "omit", cache: "no-cache", mode: "cors" })
       .then(function (r) {
         if (!r.ok) throw new Error(String(r.status));
         return r.text();
+      })
+      .then(function (text) {
+        if (!text || text.length < 40) throw new Error("empty");
+        return text;
       });
+  }
+
+  function fetchAllOriginsJson() {
+    return fetchText(FEED_PROXY_JSON).then(function (text) {
+      var packed = JSON.parse(text);
+      if (!packed || packed.status == null || packed.status.http_code >= 400) throw new Error("proxy");
+      if (!packed.contents) throw new Error("empty");
+      return packed.contents;
+    });
   }
 
   function loadLive() {
     return fetchText(FEED_LOCAL)
+      .catch(function () {
+        return fetchText(FEED_PROXY_RAW);
+      })
+      .catch(function () {
+        return fetchAllOriginsJson();
+      })
       .catch(function () {
         return fetchText(FEED_JINA, { "X-Return-Format": "text", Accept: "application/xml,text/xml,*/*" });
       })
