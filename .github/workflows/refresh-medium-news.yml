@@ -1,0 +1,60 @@
+name: Refresh Medium news snapshot
+
+on:
+  schedule:
+    - cron: "*/15 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Refresh news-data.js from Medium RSS
+        run: python3 scripts/refresh-medium-news.py
+
+      - name: Commit and push if changed
+        env:
+          ARQTRAS_GPG_PRIVATE_KEY: ${{ secrets.ARQTRAS_GPG_PRIVATE_KEY }}
+          ARQTRAS_GPG_PASSPHRASE: ${{ secrets.ARQTRAS_GPG_PASSPHRASE }}
+        run: |
+          set -e
+          if [ -z "$ARQTRAS_GPG_PRIVATE_KEY" ]; then
+            echo "ARQTRAS_GPG_PRIVATE_KEY secret missing - skipping commit (snapshot refreshed locally only)."
+            exit 0
+          fi
+
+          cat > /tmp/gpg-wrap.sh <<'WRAP'
+          #!/bin/sh
+          exec gpg --batch --yes --pinentry-mode loopback --passphrase "$ARQTRAS_GPG_PASSPHRASE" "$@"
+          WRAP
+          chmod +x /tmp/gpg-wrap.sh
+
+          echo "$ARQTRAS_GPG_PRIVATE_KEY" | gpg --batch --import
+          gpg --list-secret-keys --keyid-format long
+
+          git config user.name "ArqTras"
+          git config user.email "biuro@ar-net.info"
+          git config user.signingkey FAB8833900C876FF
+          git config commit.gpgsign true
+          git config gpg.program /tmp/gpg-wrap.sh
+
+          git add js/news-data.js
+          if git diff --cached --quiet; then
+            echo "No Medium changes."
+            exit 0
+          fi
+
+          git commit -S -m "Refresh Medium news snapshot"
+          git log -1 --show-signature
+          git push
