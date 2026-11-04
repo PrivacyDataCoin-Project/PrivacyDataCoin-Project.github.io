@@ -64,7 +64,7 @@ jobs:
           git log -1 --show-signature
           git push -u origin "$BRANCH"
 
-          PR=$(gh pr create --title "Refresh Medium news snapshot" --body "Automated Medium RSS refresh." --base main --head "$BRANCH" --json number --jq '.number')
+          PR=$(gh pr create --title "Refresh Medium news snapshot" --body "Automated Medium RSS refresh." --base main --head "$BRANCH" --jq '.number')
           echo "PR #$PR created"
           gh pr merge "$PR" --merge --delete-branch
           echo "Merged PR #$PR"
