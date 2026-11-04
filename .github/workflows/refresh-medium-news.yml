@@ -7,6 +7,7 @@ on:
 
 permissions:
   contents: write
+  pull-requests: write
 
 jobs:
   refresh:
@@ -14,6 +15,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -23,14 +26,15 @@ jobs:
       - name: Refresh news-data.js from Medium RSS
         run: python3 scripts/refresh-medium-news.py
 
-      - name: Commit and push if changed
+      - name: Commit, open PR and merge
         env:
           ARQTRAS_GPG_PRIVATE_KEY: ${{ secrets.ARQTRAS_GPG_PRIVATE_KEY }}
           ARQTRAS_GPG_PASSPHRASE: ${{ secrets.ARQTRAS_GPG_PASSPHRASE }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           set -e
           if [ -z "$ARQTRAS_GPG_PRIVATE_KEY" ]; then
-            echo "ARQTRAS_GPG_PRIVATE_KEY secret missing - skipping commit (snapshot refreshed locally only)."
+            echo "ARQTRAS_GPG_PRIVATE_KEY secret missing - skipping."
             exit 0
           fi
 
@@ -41,7 +45,6 @@ jobs:
           chmod +x /tmp/gpg-wrap.sh
 
           echo "$ARQTRAS_GPG_PRIVATE_KEY" | gpg --batch --import
-          gpg --list-secret-keys --keyid-format long
 
           git config user.name "ArqTras"
           git config user.email "biuro@ar-net.info"
@@ -55,6 +58,13 @@ jobs:
             exit 0
           fi
 
+          BRANCH="auto/medium-news-$(date +%Y%m%d%H%M%S)"
+          git checkout -b "$BRANCH"
           git commit -S -m "Refresh Medium news snapshot"
           git log -1 --show-signature
-          git push
+          git push -u origin "$BRANCH"
+
+          PR=$(gh pr create --title "Refresh Medium news snapshot" --body "Automated Medium RSS refresh." --base main --head "$BRANCH" --json number --jq '.number')
+          echo "PR #$PR created"
+          gh pr merge "$PR" --merge --delete-branch
+          echo "Merged PR #$PR"
