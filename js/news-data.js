@@ -1,10 +1,26 @@
 window.PDC_NEWS = [
   {
+    "title": "A wallet and node update: safer decoy picking for spends, compact sync fixes and audit hardening.",
+    "link": "https://medium.com/@privacydatacoin/a-wallet-and-node-update-safer-decoy-picking-for-spends-compact-sync-fixes-and-audit-hardening-a70d02e8a48e",
+    "date": "Tue, 03 Nov 2026 12:21:55 GMT",
+    "date_label": "03 Nov 2026",
+    "summary": "A wallet and node update: safer decoy picking for spends, compact sync fixes and audit hardening. Build 13, not a hard fork. A wallet and node update: safer decoy picking for spends, compact sync fixes and audit hardenin…",
+    "img": "https://cdn-images-1.medium.com/max/800/1*erDZmmKkrJFbi2ODPNyRFw@2x.jpeg"
+  },
+  {
+    "title": "Hard Fork 8 is live on the PDC network",
+    "link": "https://medium.com/@privacydatacoin/hard-fork-8-is-live-on-the-pdc-network-8eba8516cc5b",
+    "date": "Mon, 02 Nov 2026 20:23:14 GMT",
+    "date_label": "02 Nov 2026",
+    "summary": "Block 50,001 at 15:01 CET on 2 Nov — what changed and what to check on your node. Disclosure: I’m ArqTras, the developer of Privacy Data Coin (PDC). This is a technical walkthrough written by the project, not independent…",
+    "img": "https://cdn-images-1.medium.com/max/1024/1*-HJmn4E7KYNmFjp33Y8U5Q.png"
+  },
+  {
     "title": "PDC Funding: Community Escrow for Work on Privacy Data Coin",
     "link": "https://medium.com/@privacydatacoin/pdc-funding-community-escrow-for-work-on-privacy-data-coin-19bd8a419321",
     "date": "Fri, 30 Oct 2026 00:58:58 GMT",
     "date_label": "30 Oct 2026",
-    "summary": "Disclosure: I’m ArqTras, the developer of Privacy Data Coin (PDC). This is a technical walkthrough written by the project, not independent coverage. It isn’t financial or investment advice, it says nothing about prices o…",
+    "summary": "Community escrow at funding.privacydatacoin.com — TIP Bot, refreshed site &amp; docs, countdown to HF8 Disclosure: I’m ArqTras, the developer of Privacy Data Coin (PDC). This is a technical walkthrough written by the pro…",
     "img": "https://cdn-images-1.medium.com/max/1024/1*aI2sP2fie8TZa82ERvkiqA.png"
   },
   {
@@ -62,21 +78,5 @@ window.PDC_NEWS = [
     "date_label": "13 Oct 2026",
     "summary": "How to stake PrivacyDataCoin from your wallet — and why the network never learns how much you staked Most privacy coins make you choose: proof-of-work privacy, or staking that exposes your balance. PrivacyDataCoin (PDC) …",
     "img": "https://cdn-images-1.medium.com/max/1024/1*hOU_-2Irf__7vgHZvwpCgA.png"
-  },
-  {
-    "title": "What PDC Hides, What It Doesn’t: A Privacy Coin Security Guide",
-    "link": "https://medium.com/@privacydatacoin/what-pdc-hides-what-it-doesnt-a-privacy-coin-security-guide-de94d7f0cd1e",
-    "date": "Mon, 12 Oct 2026 08:08:20 GMT",
-    "date_label": "12 Oct 2026",
-    "summary": "Stealth addresses, ring signatures, Bulletproofs+ and Zarcanum explained, plus the wallet security habits that keep your PDC safe Privacy coins are often described in absolutes: “untraceable”, “anonymous”, “invisible”. R…",
-    "img": "https://cdn-images-1.medium.com/max/1024/1*5m9yTJUwiP3zkGLj-jjOCw.png"
-  },
-  {
-    "title": "Using the PDC Wallet: A Practical Guide to the GUI and the CLI",
-    "link": "https://blog.blockmagnates.com/using-the-pdc-wallet-a-practical-guide-to-the-gui-and-the-cli-1ea3a053fbae",
-    "date": "Sun, 11 Oct 2026 21:30:51 GMT",
-    "date_label": "11 Oct 2026",
-    "summary": "Install, sync, back up your seed, send, stake, and mine with Privacy Data Coin v2.4.2 Privacy Data Coin ships two wallets. The desktop wallet is a Qt 6 program that runs a node and a wallet together. The command-line too…",
-    "img": "https://cdn-images-1.medium.com/max/1024/1*GUw2M2WFmQTnI_YcK_qtGQ.png"
   }
 ];
