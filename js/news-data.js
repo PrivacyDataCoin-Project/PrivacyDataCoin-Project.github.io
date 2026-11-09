@@ -1,5 +1,13 @@
 window.PDC_NEWS = [
   {
+    "title": "PDC v3.3.1: Stability Backports and Fresh Fast-Sync Snapshots",
+    "link": "https://medium.com/@privacydatacoin/pdc-v3-3-1-stability-backports-and-fresh-fast-sync-snapshots-6deefec26b3c",
+    "date": "Sun, 08 Nov 2026 23:32:22 GMT",
+    "date_label": "08 Nov 2026",
+    "summary": "A recommended node and wallet update with three fixes ported from Zano, new fast-sync snapshots near the current chain tip, and a stricter minimum peer version. Not a hard fork. Disclosure: I’m ArqTras, the developer of …",
+    "img": "https://cdn-images-1.medium.com/max/1024/1*nZFMECo0cc86tOmfmLvWNQ.png"
+  },
+  {
     "title": "A wallet and node update: safer decoy picking for spends, compact sync fixes and audit hardening.",
     "link": "https://medium.com/@privacydatacoin/a-wallet-and-node-update-safer-decoy-picking-for-spends-compact-sync-fixes-and-audit-hardening-a70d02e8a48e",
     "date": "Tue, 03 Nov 2026 12:21:55 GMT",
@@ -70,13 +78,5 @@ window.PDC_NEWS = [
     "date_label": "13 Oct 2026",
     "summary": "A hands-on walkthrough of deploying, minting and sending a custom asset with simplewallet, and an honest look at what the chain still shows Most people meet PrivacyDataCoin through its native coin. But a PDC wallet can h…",
     "img": "https://cdn-images-1.medium.com/max/1024/1*6D_CNyHVf6gCwjWznj4L5g.png"
-  },
-  {
-    "title": "PDC Staking Guide: Private Proof-of-Stake with Zarcanum",
-    "link": "https://medium.com/@privacydatacoin/pdc-staking-guide-private-proof-of-stake-with-zarcanum-7ceb3ccbe67d",
-    "date": "Tue, 13 Oct 2026 08:16:13 GMT",
-    "date_label": "13 Oct 2026",
-    "summary": "How to stake PrivacyDataCoin from your wallet — and why the network never learns how much you staked Most privacy coins make you choose: proof-of-work privacy, or staking that exposes your balance. PrivacyDataCoin (PDC) …",
-    "img": "https://cdn-images-1.medium.com/max/1024/1*hOU_-2Irf__7vgHZvwpCgA.png"
   }
 ];
