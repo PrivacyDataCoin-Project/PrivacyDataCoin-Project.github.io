@@ -1,5 +1,13 @@
 window.PDC_NEWS = [
   {
+    "title": "PDC v3.3.2: Recommended Update with Improved Network Sync",
+    "link": "https://medium.com/@privacydatacoin/pdc-v3-3-2-recommended-update-with-improved-network-sync-65597fa1f0e9",
+    "date": "Wed, 11 Nov 2026 00:27:37 GMT",
+    "date_label": "11 Nov 2026",
+    "summary": "A recommended node and wallet update. v3.3.2 includes every change from v3.3.1 and improves network synchronization by adding a second seed and priority peer. Not a hard fork. Disclosure: I’m ArqTras, the developer of Pr…",
+    "img": "https://cdn-images-1.medium.com/max/1024/1*enlQtt6QOIXqVAFt96NQEg.png"
+  },
+  {
     "title": "PDC v3.3.1: Stability Backports and Fresh Fast-Sync Snapshots",
     "link": "https://medium.com/@privacydatacoin/pdc-v3-3-1-stability-backports-and-fresh-fast-sync-snapshots-6deefec26b3c",
     "date": "Sun, 08 Nov 2026 23:32:22 GMT",
@@ -70,13 +78,5 @@ window.PDC_NEWS = [
     "date_label": "18 Oct 2026",
     "summary": "What changed in the Privacy Data Coin wallet and node, how to upgrade, and where Trade stands in its beta testing phase Disclosure: I&#39;m ArqTras, the developer of Privacy Data Coin (PDC). This is a technical release n…",
     "img": "https://cdn-images-1.medium.com/max/1024/1*UkuYa3poQjIl6xhXhzUvKw.png"
-  },
-  {
-    "title": "Confidential Assets on PDC: Issuing a Token Whose Transfers Stay Private",
-    "link": "https://medium.com/@privacydatacoin/confidential-assets-on-pdc-issuing-a-token-whose-transfers-stay-private-085058d461e5",
-    "date": "Tue, 13 Oct 2026 19:56:38 GMT",
-    "date_label": "13 Oct 2026",
-    "summary": "A hands-on walkthrough of deploying, minting and sending a custom asset with simplewallet, and an honest look at what the chain still shows Most people meet PrivacyDataCoin through its native coin. But a PDC wallet can h…",
-    "img": "https://cdn-images-1.medium.com/max/1024/1*6D_CNyHVf6gCwjWznj4L5g.png"
   }
 ];
