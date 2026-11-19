@@ -1,5 +1,13 @@
 window.PDC_NEWS = [
   {
+    "title": "AI Answers, a New iOS Beta Build, and Multi-Asset Funding for PDC",
+    "link": "https://medium.com/@privacydatacoin/ai-answers-a-new-ios-beta-build-and-multi-asset-funding-for-pdc-c1591283aa40",
+    "date": "Wed, 18 Nov 2026 22:50:17 GMT",
+    "date_label": "18 Nov 2026",
+    "summary": "Three things are new around Privacy Data Coin: an AI assistant that answers from the project’s own documentation, a new iPhone wallet build for TestFlight, and a Funding site that now accepts PDC, BTCX and BTC. Disclosur…",
+    "img": "https://cdn-images-1.medium.com/max/1024/1*--iGehBLhSJY7u9WHEY5nQ.png"
+  },
+  {
     "title": "PDC v3.3.2: Recommended Update with Improved Network Sync",
     "link": "https://medium.com/@privacydatacoin/pdc-v3-3-2-recommended-update-with-improved-network-sync-65597fa1f0e9",
     "date": "Wed, 11 Nov 2026 00:27:37 GMT",
@@ -70,13 +78,5 @@ window.PDC_NEWS = [
     "date_label": "20 Oct 2026",
     "summary": "PDC v3.0.0: Hard Fork 8 at Height 50,000, and Why Every Node Needs to Upgrade What changes in Privacy Data Coin with build 3.0.0.11, who has to act, and what happens to nodes that stay on 2.4.x Disclosure: I’m ArqTras, t…",
     "img": "https://cdn-images-1.medium.com/max/1024/1*YmZ_SWtJkowuv0o59E7ipg.png"
-  },
-  {
-    "title": "PDC v2.4.3: A Signed Asset Whitelist, Safer Companion Auth and a Fresh Sync Snapshot",
-    "link": "https://medium.com/@privacydatacoin/pdc-v2-4-3-a-signed-asset-whitelist-safer-companion-auth-and-a-fresh-sync-snapshot-fb00d27a6131",
-    "date": "Sun, 18 Oct 2026 23:36:00 GMT",
-    "date_label": "18 Oct 2026",
-    "summary": "What changed in the Privacy Data Coin wallet and node, how to upgrade, and where Trade stands in its beta testing phase Disclosure: I&#39;m ArqTras, the developer of Privacy Data Coin (PDC). This is a technical release n…",
-    "img": "https://cdn-images-1.medium.com/max/1024/1*UkuYa3poQjIl6xhXhzUvKw.png"
   }
 ];
